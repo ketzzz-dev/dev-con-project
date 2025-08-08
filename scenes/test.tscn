@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyep7kd7t5yfy"]
+[gd_scene load_steps=23 format=3 uid="uid://dyep7kd7t5yfy"]
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/material_13.tres" id="1_errlg"]
@@ -74,6 +74,8 @@ script = ExtResource("9_ajshl")
 nodes = Array[ExtResource("7_uacia")]([SubResource("Resource_44saj"), SubResource("Resource_7yos8"), SubResource("Resource_5jxlq")])
 metadata/_custom_type_script = "uid://b0em3161bl1nx"
 
+[sub_resource type="PrismMesh" id="PrismMesh_uacia"]
+
 [node name="Test" type="Node3D"]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_bl13t")]
@@ -147,5 +149,9 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TestObject" type="Node3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
 script = ExtResource("6_lpvoh")
 graph = SubResource("Resource_xrtyr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestObject"]
+mesh = SubResource("PrismMesh_uacia")

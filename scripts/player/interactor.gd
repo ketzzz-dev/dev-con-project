@@ -16,9 +16,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func get_closest_interactable() -> Interactable:
 	var closest: Interactable = null
 	var min_distance := proximity
+	
+	var position = Vector2(player.position.x, player.position.z)
 
 	for node in get_tree().get_nodes_in_group("Interactable"):
-		var distance := player.position.distance_to(node.global_position)
+		var node_position = Vector2(node.global_position.x, node.global_position.z)
+		var distance := position.distance_to(node_position)
 
 		if distance < min_distance:
 			min_distance = distance
