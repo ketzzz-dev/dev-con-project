@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bakq10rhagrjv"]
 
-[ext_resource type="Script" uid="uid://djctostway555" path="res://scenes/volume_slider.gd" id="1_0or1g"]
+[ext_resource type="Script" uid="uid://djctostway555" path="res://scripts/ui/volume_slider.gd" id="1_0or1g"]
 
 [node name="AudioPanel" type="Panel"]
 visible = false

@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://scripts/dialogue/dialogue_manager.gd"
 
+[dotnet]
+
+project/assembly_name="dev-con-project"
+
 [file_customization]
 
 folder_colors={

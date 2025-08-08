@@ -1,12 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnyua5su0laqs"]
 
-[ext_resource type="Script" uid="uid://cayb4i5i450b0" path="res://main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cayb4i5i450b0" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="AudioStream" uid="uid://f86q66styjfp" path="res://audio/Button.wav" id="2_ekxnf"]
 [ext_resource type="AudioStream" uid="uid://crmf1crv8hwuu" path="res://audio/CorridorOfSorrow.mp3" id="3_bqqt6"]
-[ext_resource type="Script" uid="uid://djctostway555" path="res://scenes/volume_slider.gd" id="4_wu84c"]
+[ext_resource type="Script" uid="uid://djctostway555" path="res://scripts/ui/volume_slider.gd" id="4_wu84c"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
+anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
