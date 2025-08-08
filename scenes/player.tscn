@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwirmhm0gp358"]
+[gd_scene load_steps=31 format=3 uid="uid://cwirmhm0gp358"]
 
 [ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://dxrdgfyd50mxw" path="res://scripts/player/movement.gd" id="2_dqkch"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://0xphxgpiyjsa" path="res://animations/player_idle.tres" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://caiehrcl3681d" path="res://scripts/player/interactor.gd" id="2_tuyoq"]
 [ext_resource type="Script" uid="uid://dbq6vcll4r2xt" path="res://scripts/player/animator.gd" id="3_qlg0r"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cst2a4bigaguk" path="res://animations/player_move.tres" id="3_tuyoq"]
 
@@ -350,6 +351,19 @@ states/Move/position = Vector2(609, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_jcd4p"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_y81of"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_gsk6d")]
 
 [node name="Player" type="CharacterBody3D"]
+physics_interpolation_mode = 1
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("2_dqkch")
+speed = 2.0
+acceleration = 6.0
+deceleration = 12.0
+
+[node name="Interactor" type="Node" parent="."]
+script = ExtResource("2_tuyoq")
+proximity = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -381,13 +395,4 @@ parameters/conditions/is_idling = true
 parameters/conditions/is_moving = false
 parameters/Idle/blend_position = Vector2(0.960128, -0.933824)
 parameters/Move/blend_position = Vector2(-0.992025, -0.5)
-
-[node name="Movement" type="Node3D" parent="."]
-script = ExtResource("2_dqkch")
-speed = 2.0
-acceleration = 6.0
-deceleration = 12.0
-
-[node name="Animator" type="Node3D" parent="." node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("3_qlg0r")
-animation_tree = NodePath("../AnimationTree")

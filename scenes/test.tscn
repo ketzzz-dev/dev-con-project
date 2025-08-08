@@ -1,8 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyep7kd7t5yfy"]
+[gd_scene load_steps=22 format=3 uid="uid://dyep7kd7t5yfy"]
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/material_13.tres" id="1_errlg"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/camera/follow.gd" id="3_iyx0m"]
+[ext_resource type="Script" uid="uid://toqpareljyxe" path="res://scripts/ui/dialogue.gd" id="4_74lek"]
+[ext_resource type="AudioStream" uid="uid://b7ucxhihabodn" path="res://assets/blop.wav" id="5_j5jx5"]
+[ext_resource type="Script" uid="uid://cnqxl3ghxqakt" path="res://scripts/dialogue/test_object.gd" id="6_lpvoh"]
+[ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/dialogue/dialogue_node.gd" id="7_uacia"]
+[ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/dialogue/dialogue_connection.gd" id="8_yk7ts"]
+[ext_resource type="Script" uid="uid://b0em3161bl1nx" path="res://scripts/dialogue/dialogue_graph.gd" id="9_ajshl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -24,9 +30,53 @@ material = ExtResource("1_errlg")
 size = Vector2(16, 16)
 orientation = 1
 
+[sub_resource type="Resource" id="Resource_ghpyy"]
+script = ExtResource("8_yk7ts")
+label = &""
+next_node = &"where"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_44saj"]
+script = ExtResource("7_uacia")
+id = &"start"
+content = "Woah!"
+connections = Array[ExtResource("8_yk7ts")]([SubResource("Resource_ghpyy")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_7mbro"]
+script = ExtResource("8_yk7ts")
+label = &"Yeah"
+next_node = &"wow"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_ff6ho"]
+script = ExtResource("8_yk7ts")
+label = &"I don\'t know"
+next_node = &""
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_7yos8"]
+script = ExtResource("7_uacia")
+id = &"where"
+content = "Where am I?"
+connections = Array[ExtResource("8_yk7ts")]([SubResource("Resource_7mbro"), SubResource("Resource_ff6ho")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_5jxlq"]
+script = ExtResource("7_uacia")
+id = &"wow"
+content = "Wow!"
+connections = Array[ExtResource("8_yk7ts")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_xrtyr"]
+script = ExtResource("9_ajshl")
+nodes = Array[ExtResource("7_uacia")]([SubResource("Resource_44saj"), SubResource("Resource_7yos8"), SubResource("Resource_5jxlq")])
+metadata/_custom_type_script = "uid://b0em3161bl1nx"
+
 [node name="Test" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_bl13t")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_bl13t")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lpvoh")
@@ -44,11 +94,58 @@ debug_fill = false
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("QuadMesh_jcd4p")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10)
 fov = 45.0
-
-[node name="Follow" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("target")]
 script = ExtResource("3_iyx0m")
-target = NodePath("../../Player")
+target = NodePath("../Player")
 offset = Vector3(0, 3, 6)
+
+[node name="Dialogue" type="Control" parent="." node_paths=PackedStringArray("subtitles", "options_container", "type_timer", "type_audio")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_74lek")
+subtitles = NodePath("Subtitles")
+options_container = NodePath("OptionsContainer")
+type_timer = NodePath("TypeTimer")
+type_audio = NodePath("TypeAudio")
+
+[node name="Subtitles" type="Label" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 544.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "KILL CHILDREN
+KILL CHILDREN"
+horizontal_alignment = 1
+
+[node name="TypeTimer" type="Timer" parent="Dialogue"]
+wait_time = 0.05
+
+[node name="TypeAudio" type="AudioStreamPlayer" parent="Dialogue"]
+stream = ExtResource("5_j5jx5")
+volume_db = -8.0
+
+[node name="OptionsContainer" type="HBoxContainer" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 482.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TestObject" type="Node3D" parent="." groups=["Interactable"]]
+script = ExtResource("6_lpvoh")
+graph = SubResource("Resource_xrtyr")
