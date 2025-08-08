@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="dev-con-project"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="uid://cnyua5su0laqs"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="dev-con-project"
 
 [file_customization]
 
