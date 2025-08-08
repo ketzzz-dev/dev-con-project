@@ -15,10 +15,16 @@ run/main_scene="res://scenes/test.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DialogueManager="*res://scripts/dialogue/dialogue_manager.gd"
+
 [file_customization]
 
 folder_colors={
+"res://animations/": "blue",
 "res://assets/": "green",
+"res://resources/": "orange",
 "res://scenes/": "gray",
 "res://scripts/": "red"
 }
