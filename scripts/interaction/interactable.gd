@@ -1,4 +1,4 @@
 class_name Interactable extends Node
 
 func interact() -> void:
-	print('No implementation')
+	print('No Implementation')

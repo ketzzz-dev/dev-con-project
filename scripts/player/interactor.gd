@@ -1,30 +1,38 @@
 extends Node
 
-@export var proximity: float
+@export var interaction_area: Area3D
 
 @onready var player: CharacterBody3D = get_parent()
 
-var closest_interactable: Interactable
+var nearby_interactables: Dictionary[Node3D, Interactable] = {}
 
-func _physics_process(_delta: float) -> void:
-	closest_interactable = get_closest_interactable()
+func _ready() -> void:
+	interaction_area.body_entered.connect(on_body_entered)
+	interaction_area.body_exited.connect(on_body_exited)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and closest_interactable:
-		closest_interactable.interact()
+	if event.is_action_pressed("interact"):
+		var interactable = get_closest_interactable()
+
+		if interactable: interactable.interact()
+
+func on_body_entered(body: Node3D) -> void:
+	for node in body.get_children():
+		if node is Interactable:
+			nearby_interactables.set(body, node)
+
+func on_body_exited(body: Node3D) -> void:
+	nearby_interactables.erase(body)
 
 func get_closest_interactable() -> Interactable:
-	var closest: Interactable = null
-	var min_distance := proximity
-	
-	var position = Vector2(player.position.x, player.position.z)
+	var closest: Interactable
+	var min_distance := INF
 
-	for node in get_tree().get_nodes_in_group("Interactable"):
-		var node_position = Vector2(node.global_position.x, node.global_position.z)
-		var distance := position.distance_to(node_position)
+	for node in nearby_interactables:
+		var distance = player.global_position.distance_to(node.global_position)
 
 		if distance < min_distance:
 			min_distance = distance
-			closest = node
+			closest = nearby_interactables[node]
 
 	return closest

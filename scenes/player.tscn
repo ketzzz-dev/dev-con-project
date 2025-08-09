@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cwirmhm0gp358"]
+[gd_scene load_steps=32 format=3 uid="uid://cwirmhm0gp358"]
 
 [ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://dxrdgfyd50mxw" path="res://scripts/player/movement.gd" id="2_dqkch"]
@@ -350,20 +350,15 @@ states/Move/node = ExtResource("3_tuyoq")
 states/Move/position = Vector2(609, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_jcd4p"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_y81of"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_gsk6d")]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tuyoq"]
+radius = 1.0
+
 [node name="Player" type="CharacterBody3D"]
 physics_interpolation_mode = 1
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("2_dqkch")
-speed = 2.0
-acceleration = 6.0
-deceleration = 12.0
-
-[node name="Interactor" type="Node" parent="."]
-script = ExtResource("2_tuyoq")
-proximity = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -395,4 +390,23 @@ parameters/conditions/is_idling = true
 parameters/conditions/is_moving = false
 parameters/Idle/blend_position = Vector2(0.960128, -0.933824)
 parameters/Move/blend_position = Vector2(-0.992025, -0.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_tuyoq")
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("2_dqkch")
+speed = 2.0
+acceleration = 6.0
+deceleration = 12.0
+
+[node name="Animator" type="Node" parent="." node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("3_qlg0r")
+animation_tree = NodePath("../AnimationTree")
+
+[node name="Interactor" type="Node" parent="." node_paths=PackedStringArray("interaction_area")]
+script = ExtResource("2_tuyoq")
+interaction_area = NodePath("../Area3D")
