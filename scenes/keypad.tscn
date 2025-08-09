@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://82sr7xx07dy8"]
+[gd_scene load_steps=7 format=3 uid="uid://82sr7xx07dy8"]
 
+[ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://materials/outline.tres" id="1_1dgaj"]
 [ext_resource type="Script" uid="uid://bmaee3on05yxb" path="res://scripts/puzzles/keypad.gd" id="1_o2pmc"]
 [ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/keypad_ui.tscn" id="2_vxa2g"]
+[ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scenes/outline.gd" id="2_y3le2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7cm"]
 size = Vector3(0.3, 1.07422, 0.522095)
@@ -16,7 +18,9 @@ shape = SubResource("BoxShape3D_is7cm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 1.1, 0, 0, 0, 0.5, 0, 0.55, 0)
+material_overlay = ExtResource("1_1dgaj")
 mesh = SubResource("BoxMesh_o2pmc")
+script = ExtResource("2_y3le2")
 
 [node name="Interactable" type="Node" parent="."]
 script = ExtResource("1_o2pmc")
