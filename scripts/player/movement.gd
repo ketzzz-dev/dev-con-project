@@ -1,27 +1,25 @@
-extends Node3D
+extends Node
 
 @export var speed: float
 @export var acceleration: float
 @export var deceleration: float
 
-@onready var player := get_parent()
+@onready var player: CharacterBody3D = get_parent()
 
 var input_direction := Vector2.ZERO
 
 func _process(_delta: float) -> void:
-	input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if DialogueManager.is_active:
+		input_direction = Vector2.ZERO
+	else:
+		input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 func _physics_process(delta: float) -> void:
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
-	else:
-		move(delta)
 	
-	player.move_and_slide()
-
-func move(delta: float) -> void:
 	var move_direction := Vector3(input_direction.x, 0, input_direction.y)
-	var is_moving := move_direction.length_squared() > 0
+	var is_moving := move_direction.length_squared() > 0.25
 	
 	if is_moving:
 		move_direction = move_direction.normalized()
@@ -32,3 +30,5 @@ func move(delta: float) -> void:
 	
 	player.velocity.x += delta_velocity.x * acceleration_rate * delta
 	player.velocity.z += delta_velocity.z * acceleration_rate * delta
+
+	player.move_and_slide()
