@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyep7kd7t5yfy"]
+[gd_scene load_steps=17 format=3 uid="uid://dyep7kd7t5yfy"]
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/material_13.tres" id="1_errlg"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/camera/follow.gd" id="3_iyx0m"]
-[ext_resource type="Script" uid="uid://toqpareljyxe" path="res://scripts/ui/dialogue.gd" id="4_74lek"]
-[ext_resource type="AudioStream" uid="uid://b7ucxhihabodn" path="res://assets/blop.wav" id="5_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://b2idpaal0ybh8" path="res://scenes/dialogue.tscn" id="4_lpvoh"]
+[ext_resource type="Shader" uid="uid://bqihvlk2aft5f" path="res://shaders/outline.gdshader" id="5_at5dv"]
 [ext_resource type="Script" uid="uid://cnqxl3ghxqakt" path="res://scripts/dialogue/test_object.gd" id="6_lpvoh"]
+[ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scenes/outline.gd" id="6_uacia"]
 [ext_resource type="Resource" uid="uid://cajpx5347uvtt" path="res://resources/dialogue/test_dialogue.tres" id="7_at5dv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
@@ -28,7 +29,15 @@ material = ExtResource("1_errlg")
 size = Vector2(16, 16)
 orientation = 1
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcd4p"]
+render_priority = 0
+shader = ExtResource("5_at5dv")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 0.025
+shader_parameter/is_active = true
+
 [sub_resource type="PrismMesh" id="PrismMesh_uacia"]
+material = ExtResource("1_errlg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uacia"]
 
@@ -59,59 +68,19 @@ script = ExtResource("3_iyx0m")
 target = NodePath("../Player")
 offset = Vector3(0, 3, 6)
 
-[node name="Dialogue" type="Control" parent="." node_paths=PackedStringArray("subtitles", "options_container", "type_timer", "type_audio")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_74lek")
-subtitles = NodePath("Subtitles")
-options_container = NodePath("OptionsContainer")
-type_timer = NodePath("TypeTimer")
-type_audio = NodePath("TypeAudio")
-
-[node name="Subtitles" type="Label" parent="Dialogue"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 544.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "KILL CHILDREN
-KILL CHILDREN"
-horizontal_alignment = 1
-
-[node name="TypeTimer" type="Timer" parent="Dialogue"]
-wait_time = 0.05
-
-[node name="TypeAudio" type="AudioStreamPlayer" parent="Dialogue"]
-stream = ExtResource("5_j5jx5")
-volume_db = -8.0
-
-[node name="OptionsContainer" type="HBoxContainer" parent="Dialogue"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 482.0
-offset_bottom = -115.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="Dialogue" parent="." instance=ExtResource("4_lpvoh")]
 
 [node name="TestObject" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestObject"]
+material_overlay = SubResource("ShaderMaterial_jcd4p")
 mesh = SubResource("PrismMesh_uacia")
+script = ExtResource("6_uacia")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestObject"]
 shape = SubResource("BoxShape3D_uacia")
+debug_fill = false
 
 [node name="Interactable" type="Node" parent="TestObject"]
 script = ExtResource("6_lpvoh")

@@ -25,9 +25,11 @@ DialogueManager="*res://scripts/dialogue/dialogue_manager.gd"
 folder_colors={
 "res://animations/": "blue",
 "res://assets/": "green",
+"res://materials/": "purple",
 "res://resources/": "orange",
 "res://scenes/": "gray",
-"res://scripts/": "red"
+"res://scripts/": "red",
+"res://shaders/": "teal"
 }
 
 [global_group]

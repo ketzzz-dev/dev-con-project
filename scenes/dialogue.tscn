@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2idpaal0ybh8"]
+
+[ext_resource type="Script" uid="uid://toqpareljyxe" path="res://scripts/ui/dialogue.gd" id="1_3n4vj"]
+[ext_resource type="AudioStream" uid="uid://b7ucxhihabodn" path="res://assets/blop.wav" id="2_bfpow"]
+
+[node name="Dialogue" type="Control" node_paths=PackedStringArray("subtitles", "options_container", "type_timer", "type_audio")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3n4vj")
+subtitles = NodePath("Subtitles")
+options_container = NodePath("OptionsContainer")
+type_timer = NodePath("TypeTimer")
+type_audio = NodePath("TypeAudio")
+
+[node name="Subtitles" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 544.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "KILL CHILDREN
+KILL CHILDREN"
+horizontal_alignment = 1
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="TypeAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bfpow")
+volume_db = -8.0
+
+[node name="OptionsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 482.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
