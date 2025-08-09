@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyep7kd7t5yfy"]
+[gd_scene load_steps=13 format=3 uid="uid://dyep7kd7t5yfy"]
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/material_13.tres" id="1_errlg"]
-[ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/keypad_ui.tscn" id="1_jcd4p"]
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/game_ui.tscn" id="1_lpvoh"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/camera/follow.gd" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="4_74lek"]
@@ -31,10 +30,6 @@ size = Vector2(16, 16)
 orientation = 1
 
 [node name="Test" type="Node3D"]
-
-[node name="KeypadUI" parent="." instance=ExtResource("1_jcd4p")]
-offset_top = -3.0
-offset_bottom = -3.0
 
 [node name="GameUI" parent="." instance=ExtResource("1_lpvoh")]
 offset_top = -3.0

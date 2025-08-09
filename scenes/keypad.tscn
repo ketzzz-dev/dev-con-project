@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://82sr7xx07dy8"]
+[gd_scene load_steps=5 format=3 uid="uid://82sr7xx07dy8"]
 
 [ext_resource type="Script" uid="uid://bmaee3on05yxb" path="res://scripts/puzzles/keypad.gd" id="1_o2pmc"]
+[ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/keypad_ui.tscn" id="2_vxa2g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7cm"]
 size = Vector3(0.3, 1.07422, 0.522095)
@@ -19,4 +20,9 @@ mesh = SubResource("BoxMesh_o2pmc")
 
 [node name="Interactable" type="Node" parent="."]
 script = ExtResource("1_o2pmc")
+pass_code = "3151"
 metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
+
+[node name="KeypadUI" parent="." instance=ExtResource("2_vxa2g")]
+unique_name_in_owner = true
+visible = false
