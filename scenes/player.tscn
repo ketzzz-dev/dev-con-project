@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwirmhm0gp358"]
+[gd_scene load_steps=30 format=3 uid="uid://r0xokhakbwus"]
 
 [ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://dxrdgfyd50mxw" path="res://scripts/player/movement.gd" id="2_dqkch"]
@@ -391,3 +391,12 @@ deceleration = 12.0
 [node name="Animator" type="Node3D" parent="." node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("3_qlg0r")
 animation_tree = NodePath("../AnimationTree")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+light_energy = 0.15
+light_size = 2.0
+shadow_enabled = true
+omni_range = 2.0
+
+[node name="Inventory" type="Node3D" parent="."]
