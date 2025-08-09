@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dac4twkr6qodb"]
+
+[ext_resource type="Texture2D" uid="uid://cfyql6snfr1p2" path="res://assets/placeholder/suzuka.png" id="1_6c338"]
+[ext_resource type="Script" uid="uid://ch2bdjgtuqjga" path="res://scripts/inventory/item.gd" id="2_28b80"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28b80"]
+radius = 0.240319
+height = 1.26626
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Sprite" type="Sprite3D" parent="."]
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("1_6c338")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_28b80")
+
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("item_sprite")]
+script = ExtResource("2_28b80")
+item_name = "Silence Suzuka"
+item_sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d2cw4dtbia3w2"

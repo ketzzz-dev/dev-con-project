@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/material_13.tres" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/game_ui.tscn" id="1_lpvoh"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/camera/follow.gd" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://b2idpaal0ybh8" path="res://scenes/dialogue.tscn" id="4_lpvoh"]
 [ext_resource type="Shader" uid="uid://bqihvlk2aft5f" path="res://shaders/outline.gdshader" id="5_at5dv"]
 [ext_resource type="Script" uid="uid://cnqxl3ghxqakt" path="res://scripts/dialogue/test_object.gd" id="6_lpvoh"]
 [ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scenes/outline.gd" id="6_uacia"]
 [ext_resource type="Resource" uid="uid://cajpx5347uvtt" path="res://resources/dialogue/test_dialogue.tres" id="7_at5dv"]
+[ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="4_74lek"]
+[ext_resource type="PackedScene" uid="uid://dac4twkr6qodb" path="res://scenes/suzuka_item.tscn" id="5_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/keypad.tscn" id="7_at5dv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,7 +21,8 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_74lek")
 
 [sub_resource type="Environment" id="Environment_lpvoh"]
-background_mode = 2
+background_mode = 1
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_j5jx5")
 tonemap_mode = 2
 glow_enabled = true
@@ -43,16 +48,19 @@ material = ExtResource("1_errlg")
 
 [node name="Test" type="Node3D"]
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_bl13t")]
+[node name="GameUI" parent="." instance=ExtResource("1_lpvoh")]
+offset_top = -3.0
+offset_bottom = -3.0
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_bl13t")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.017, 0, -0.00416851)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lpvoh")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.863854, -0.436219, 0.251931, 0.422595, -0.355357, 0.833748, -0.274171, 0.826701, 0.49132, 0, 0, 0)
-shadow_enabled = true
-
 [node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape3D_at5dv")
@@ -62,7 +70,7 @@ debug_fill = false
 mesh = SubResource("QuadMesh_jcd4p")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5, 10)
 fov = 45.0
 script = ExtResource("3_iyx0m")
 target = NodePath("../Player")
@@ -85,3 +93,28 @@ debug_fill = false
 [node name="Interactable" type="Node" parent="TestObject"]
 script = ExtResource("6_lpvoh")
 graph = ExtResource("7_at5dv")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.00092688, 0.00026579, -1, -0.00284278, 0.999996, 0.000268424, 0.999996, 0.00284303, -0.00092612, -0.121512, 2.12917, -11.2071)
+light_energy = 0.0
+
+[node name="train_room1" parent="." instance=ExtResource("4_74lek")]
+transform = Transform3D(-0.00278064, 0.00079737, -3, -0.00852834, 2.99999, 0.000805314, 2.99999, 0.00852909, -0.00277835, -0.00644307, 0.638384, -1.83918)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_energy = 5.0
+spot_range = 8.0
+spot_attenuation = 2.0
+spot_angle = 60.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30, 4, 0)
+light_energy = 9.364
+spot_range = 12.0
+spot_angle = 74.6
+
+[node name="SuzukaItem" parent="." instance=ExtResource("5_j5jx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2083, 0.6, 0)
+
+[node name="Keypad" parent="." instance=ExtResource("7_at5dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7904, 0, 0.423896)
