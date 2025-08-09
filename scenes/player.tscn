@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwirmhm0gp358"]
+[gd_scene load_steps=30 format=3 uid="uid://dlyqa2puhvsxb"]
 
 [ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://dxrdgfyd50mxw" path="res://scripts/player/movement.gd" id="2_dqkch"]

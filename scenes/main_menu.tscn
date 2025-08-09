@@ -13,6 +13,7 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
+sceneName = "test2"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
