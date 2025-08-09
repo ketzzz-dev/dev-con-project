@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://3svsacwngjq3"]
+
+[ext_resource type="Script" uid="uid://cx70gabsmoakg" path="res://scenes/game_timer.gd" id="1_bcnom"]
+
+[node name="GameTimer" type="Node"]
+script = ExtResource("1_bcnom")
+sceneName = "test2"
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 42
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true

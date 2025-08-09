@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://bakq10rhagrjv"]
+
+[ext_resource type="Script" uid="uid://djctostway555" path="res://scripts/ui/volume_slider.gd" id="1_0or1g"]
+
+[node name="AudioPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.5
+offset_top = -121.0
+offset_right = 218.5
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "MASTER"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer2"]
+layout_mode = 2
+min_value = 0.001
+max_value = 2.0
+step = 0.1
+value = 0.001
+script = ExtResource("1_0or1g")
+bus_name = "Master"
+
+[node name="BGMLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "BACKGROUND MUSIC"
+horizontal_alignment = 1
+
+[node name="BGMSlider" type="HSlider" parent="VBoxContainer2"]
+layout_mode = 2
+min_value = 0.001
+max_value = 2.0
+step = 0.1
+value = 0.001
+script = ExtResource("1_0or1g")
+bus_name = "bgm"
+
+[node name="SFXLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "SOUND EFFECTS"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer2"]
+layout_mode = 2
+min_value = 0.001
+max_value = 2.0
+step = 0.1
+value = 0.001
+script = ExtResource("1_0or1g")
+bus_name = "sfx"
+
+[node name="Leave" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "LEAVE"

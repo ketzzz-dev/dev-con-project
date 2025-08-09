@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnyua5su0laqs"]
+
+[ext_resource type="Script" uid="uid://cayb4i5i450b0" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://f86q66styjfp" path="res://audio/Button.wav" id="2_ekxnf"]
+[ext_resource type="AudioStream" uid="uid://crmf1crv8hwuu" path="res://audio/CorridorOfSorrow.mp3" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://djctostway555" path="res://scripts/ui/volume_slider.gd" id="4_wu84c"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+sceneName = "test2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -110.5
+offset_right = 107.5
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "START"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "SETTINGS"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "EXIT"
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Button" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("2_ekxnf")
+bus = &"sfx"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_bqqt6")
+bus = &"bgm"
+
+[node name="AudioPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AudioPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.5
+offset_top = -121.0
+offset_right = 218.5
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "MASTER"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+min_value = 0.001
+max_value = 2.0
+step = 0.1
+value = 0.001
+script = ExtResource("4_wu84c")
+bus_name = "Master"
+
+[node name="BGMLabel" type="Label" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "BACKGROUND MUSIC"
+horizontal_alignment = 1
+
+[node name="BGMSlider" type="HSlider" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+min_value = 0.001
+max_value = 2.0
+step = 0.1
+value = 0.001
+script = ExtResource("4_wu84c")
+bus_name = "bgm"
+
+[node name="SFXLabel" type="Label" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "SOUND EFFECTS"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+min_value = 0.001
+max_value = 2.0
+step = 0.1
+value = 0.001
+script = ExtResource("4_wu84c")
+bus_name = "sfx"
+
+[node name="Leave" type="Button" parent="AudioPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "LEAVE"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="AudioPanel/VBoxContainer2/Leave" to="." method="_on_leave_pressed"]
