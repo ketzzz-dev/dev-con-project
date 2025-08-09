@@ -4,14 +4,12 @@
 [ext_resource type="Script" uid="uid://ch2bdjgtuqjga" path="res://scripts/inventory/item.gd" id="2_28b80"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28b80"]
-radius = 0.280724
-height = 1.24791
+radius = 0.240319
+height = 1.26626
 
-[node name="SuzukaItem" type="Area3D"]
-script = ExtResource("2_28b80")
-item_name = "Silence Suzuka"
+[node name="StaticBody3D" type="StaticBody3D"]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite" type="Sprite3D" parent="."]
 pixel_size = 0.001
 billboard = 2
 shaded = true
@@ -21,4 +19,8 @@ texture = ExtResource("1_6c338")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_28b80")
 
-[connection signal="body_entered" from="." to="." method="_on_item_entered"]
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("item_sprite")]
+script = ExtResource("2_28b80")
+item_name = "Silence Suzuka"
+item_sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d2cw4dtbia3w2"

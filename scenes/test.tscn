@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyep7kd7t5yfy"]
+[gd_scene load_steps=14 format=3 uid="uid://dyep7kd7t5yfy"]
 
-[ext_resource type="PackedScene" uid="uid://r0xokhakbwus" path="res://scenes/player.tscn" id="1_bl13t"]
+[ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="1_bl13t"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/material_13.tres" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/keypad_ui.tscn" id="1_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/game_ui.tscn" id="1_lpvoh"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/camera/follow.gd" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="4_74lek"]
 [ext_resource type="PackedScene" uid="uid://dac4twkr6qodb" path="res://scenes/suzuka_item.tscn" id="5_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/keypad.tscn" id="7_at5dv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -27,13 +30,18 @@ material = ExtResource("1_errlg")
 size = Vector2(16, 16)
 orientation = 1
 
-[sub_resource type="PrismMesh" id="PrismMesh_uacia"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uacia"]
-
 [node name="Test" type="Node3D"]
 
+[node name="KeypadUI" parent="." instance=ExtResource("1_jcd4p")]
+offset_top = -3.0
+offset_bottom = -3.0
+
+[node name="GameUI" parent="." instance=ExtResource("1_lpvoh")]
+offset_top = -3.0
+offset_bottom = -3.0
+
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_bl13t")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.017, 0, -0.00416851)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -49,7 +57,7 @@ debug_fill = false
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("QuadMesh_jcd4p")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5, 10)
 fov = 45.0
 script = ExtResource("3_iyx0m")
@@ -77,4 +85,7 @@ spot_range = 12.0
 spot_angle = 74.6
 
 [node name="SuzukaItem" parent="." instance=ExtResource("5_j5jx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1937, 0.575224, 0.0135189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2083, 0.6, 0)
+
+[node name="Keypad" parent="." instance=ExtResource("7_at5dv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7904, 0, 0.423896)

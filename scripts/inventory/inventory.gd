@@ -1,11 +1,13 @@
-extends Node3D
+class_name Inventory extends Node
 
-@export var items = []
+@onready var game_ui: Control = get_tree().current_scene.get_node("GameUI")
+
 var held_item
 
-func add_item(item: Area3D) -> void:
-	items.push_back(item)
-	pass
+func set_item(item: Item) -> void:
+	held_item = item
+	game_ui.get_node("Item").set_item(item)
 
-func remove_item() -> void:
-	pass
+func clear_item() -> void:
+	held_item = null
+	game_ui.get_node("Item").clear_item()
