@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3dlhi84tpeuy"]
 
-[ext_resource type="PackedScene" uid="uid://3svsacwngjq3" path="res://scenes/game_timer.tscn" id="1_4jsyu"]
-[ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="2_1ft1o"]
+[ext_resource type="PackedScene" uid="uid://3svsacwngjq3" path="res://scenes/ui/components/game_timer.tscn" id="1_4jsyu"]
+[ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_1ft1o"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_8r8o6"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_ndd0t"]
 

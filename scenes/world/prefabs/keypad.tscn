@@ -2,8 +2,8 @@
 
 [ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="1_1dgaj"]
 [ext_resource type="Script" uid="uid://bmaee3on05yxb" path="res://scripts/entities/props/keypad.gd" id="1_o2pmc"]
-[ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/ui/keypad_ui.tscn" id="2_vxa2g"]
-[ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scenes/outline.gd" id="2_y3le2"]
+[ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/ui/components/keypad_ui.tscn" id="2_vxa2g"]
+[ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scripts/gameplay/interactable/outline.gd" id="2_y3le2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7cm"]
 size = Vector3(0.3, 1.07422, 0.522095)

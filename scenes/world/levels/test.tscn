@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://dyep7kd7t5yfy"]
 
-[ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/ui.tscn" id="1_27dlr"]
-[ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="2_1nm11"]
-[ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_avmm1"]
-[ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_a11d0"]
-[ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="5_kafaw"]
-[ext_resource type="PackedScene" uid="uid://bojfk37a7y5qr" path="res://scenes/suzuka_item.tscn" id="6_erupl"]
-[ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/keypad.tscn" id="7_2vq0s"]
+[ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="1_y8gaj"]
+[ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_dk5ks"]
+[ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_1camt"]
+[ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_8vwe0"]
+[ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="5_qkon3"]
+[ext_resource type="PackedScene" uid="uid://bojfk37a7y5qr" path="res://scenes/world/prefabs/suzuka_item.tscn" id="6_ts6ll"]
+[ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/world/prefabs/keypad.tscn" id="7_h18i7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -25,17 +25,17 @@ glow_enabled = true
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_at5dv"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jcd4p"]
-material = ExtResource("3_avmm1")
+material = ExtResource("3_1camt")
 size = Vector2(16, 16)
 orientation = 1
 
 [node name="Test" type="Node3D"]
 
-[node name="GameUI" parent="." instance=ExtResource("1_27dlr")]
+[node name="GameUI" parent="." instance=ExtResource("1_y8gaj")]
 offset_top = -3.0
 offset_bottom = -3.0
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_1nm11")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_dk5ks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.017, 0, -0.00416851)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -54,7 +54,7 @@ mesh = SubResource("QuadMesh_jcd4p")
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5, 10)
 fov = 45.0
-script = ExtResource("4_a11d0")
+script = ExtResource("4_8vwe0")
 target = NodePath("../Player")
 offset = Vector3(0, 3, 6)
 
@@ -62,7 +62,7 @@ offset = Vector3(0, 3, 6)
 transform = Transform3D(-0.00092688, 0.00026579, -1, -0.00284278, 0.999996, 0.000268424, 0.999996, 0.00284303, -0.00092612, -0.121512, 2.12917, -11.2071)
 light_energy = 0.0
 
-[node name="train_room1" parent="." instance=ExtResource("5_kafaw")]
+[node name="train_room1" parent="." instance=ExtResource("5_qkon3")]
 transform = Transform3D(-0.00278064, 0.00079737, -3, -0.00852834, 2.99999, 0.000805314, 2.99999, 0.00852909, -0.00277835, -0.00644307, 0.638384, -1.83918)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -78,8 +78,8 @@ light_energy = 9.364
 spot_range = 12.0
 spot_angle = 74.6
 
-[node name="SuzukaItem" parent="." instance=ExtResource("6_erupl")]
+[node name="SuzukaItem" parent="." instance=ExtResource("6_ts6ll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2083, 0.6, 0)
 
-[node name="Keypad" parent="." instance=ExtResource("7_2vq0s")]
+[node name="Keypad" parent="." instance=ExtResource("7_h18i7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7904, 0, 0.423896)

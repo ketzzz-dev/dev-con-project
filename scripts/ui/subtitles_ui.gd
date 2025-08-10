@@ -3,7 +3,7 @@ extends Label
 const OPTION_POOL_SIZE := 4
 const TYPE_AUDIO_POOL_SIZE := 4
 
-const Option: PackedScene = preload("res://scenes/ui/option_ui.tscn")
+const Option: PackedScene = preload("res://scenes/ui/components/option_ui.tscn")
 
 @export var options_container: HBoxContainer
 @export var type_timer: Timer
