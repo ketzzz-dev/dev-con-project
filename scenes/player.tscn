@@ -1,16 +1,18 @@
-[gd_scene load_steps=33 format=3 uid="uid://cwirmhm0gp358"]
+[gd_scene load_steps=32 format=3 uid="uid://cwirmhm0gp358"]
 
-[ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
-[ext_resource type="Script" uid="uid://dxrdgfyd50mxw" path="res://scripts/player/movement.gd" id="2_dqkch"]
-[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://0xphxgpiyjsa" path="res://animations/player_idle.tres" id="2_qlg0r"]
-[ext_resource type="Script" uid="uid://caiehrcl3681d" path="res://scripts/player/interactor.gd" id="2_tuyoq"]
-[ext_resource type="Script" uid="uid://dbq6vcll4r2xt" path="res://scripts/player/animator.gd" id="3_qlg0r"]
-[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cst2a4bigaguk" path="res://animations/player_move.tres" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://d3pssq2m3jbk" path="res://scripts/inventory/inventory.gd" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/sprites/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://0xphxgpiyjsa" path="res://assets/animations/player_idle.tres" id="2_qlg0r"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cst2a4bigaguk" path="res://assets/animations/player_move.tres" id="3_tuyoq"]
+[ext_resource type="Script" uid="uid://kks6g61gxan0" path="res://entities/player/player_movement.gd" id="4_fjrip"]
+[ext_resource type="Script" uid="uid://d0mati00h2u45" path="res://entities/player/player_animator.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://dvtnsxc36jod8" path="res://entities/player/player_interactor.gd" id="6_ur7pv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bl13t"]
 height = 1.0
 radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tuyoq"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_j5jx5"]
 length = 0.001
@@ -351,9 +353,6 @@ states/Move/node = ExtResource("3_tuyoq")
 states/Move/position = Vector2(609, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_jcd4p"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_y81of"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_gsk6d")]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_tuyoq"]
-radius = 1.0
-
 [node name="Player" type="CharacterBody3D"]
 physics_interpolation_mode = 1
 axis_lock_linear_y = true
@@ -365,6 +364,12 @@ axis_lock_angular_z = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_bl13t")
 debug_fill = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_tuyoq")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 offset = Vector2(0.5, 10)
@@ -392,22 +397,6 @@ parameters/conditions/is_moving = false
 parameters/Idle/blend_position = Vector2(0.960128, -0.933824)
 parameters/Move/blend_position = Vector2(-0.992025, -0.5)
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_tuyoq")
-
-[node name="Movement" type="Node" parent="."]
-script = ExtResource("2_dqkch")
-speed = 2.0
-acceleration = 6.0
-deceleration = 12.0
-
-[node name="Animator" type="Node" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("3_qlg0r")
-animation_tree = NodePath("../AnimationTree")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 light_energy = 0.15
@@ -415,13 +404,18 @@ light_size = 2.0
 shadow_enabled = true
 omni_range = 2.0
 
-[node name="Interactor" type="Node" parent="." node_paths=PackedStringArray("interaction_area")]
-script = ExtResource("2_tuyoq")
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource("4_fjrip")
+speed = 2.0
+acceleration = 6.0
+deceleration = 12.0
+
+[node name="PlayerAnimator" type="Node" parent="." node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("5_smehm")
+animation_tree = NodePath("../AnimationTree")
+
+[node name="PlayerInteractor" type="Node" parent="." node_paths=PackedStringArray("interaction_area")]
+script = ExtResource("6_ur7pv")
 interaction_area = NodePath("../Area3D")
 
-[node name="Inventory" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_fjrip")
-metadata/_custom_type_script = "uid://d3pssq2m3jbk"
-
-[connection signal="body_entered" from="Area3D" to="Movement" method="on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="PlayerMovement" method="on_body_entered"]

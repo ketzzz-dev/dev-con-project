@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bojfk37a7y5qr"]
 
 [ext_resource type="Texture2D" uid="uid://cfyql6snfr1p2" path="res://assets/placeholder/suzuka.png" id="1_6c338"]
-[ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://materials/outline.tres" id="1_m4atr"]
-[ext_resource type="Script" uid="uid://ch2bdjgtuqjga" path="res://scripts/inventory/item.gd" id="2_28b80"]
+[ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="1_m4atr"]
+[ext_resource type="Script" uid="uid://ch2bdjgtuqjga" path="res://gameplay/interactable/item.gd" id="2_28b80"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28b80"]
 radius = 0.240319

@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://gjlckowlj43l"]
+
+[ext_resource type="Script" uid="uid://nse0ll6l7hem" path="res://ui/item_ui.gd" id="1_yubou"]
+[ext_resource type="AudioStream" uid="uid://b7ucxhihabodn" path="res://assets/audio/sfx/blop.wav" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://darcxhmbjfx04" path="res://gameplay/dialogue/subtitles.gd" id="2_yev5y"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item" type="Panel" parent="." node_paths=PackedStringArray("item_icon", "item_text")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+offset_right = 320.0
+grow_vertical = 0
+script = ExtResource("1_yubou")
+item_icon = NodePath("TextureRect")
+item_text = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Item"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -20.0
+offset_right = 224.0
+offset_bottom = 20.0
+grow_vertical = 2
+text = "None"
+fit_content = true
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Item"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -20.0
+offset_right = -16.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Subtitles" type="Label" parent="." node_paths=PackedStringArray("options_container", "type_timer", "type_audio")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 544.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "KILL CHILDREN
+KILL CHILDREN"
+horizontal_alignment = 1
+script = ExtResource("2_yev5y")
+options_container = NodePath("../OptionsContainer")
+type_timer = NodePath("../TypeTimer")
+type_audio = NodePath("../TypeAudio")
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="TypeAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_x4jx1")
+volume_db = -8.0
+
+[node name="OptionsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 482.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
