@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nse0ll6l7hem" path="res://ui/item_ui.gd" id="1_yubou"]
 [ext_resource type="AudioStream" uid="uid://b7ucxhihabodn" path="res://assets/audio/sfx/blop.wav" id="2_x4jx1"]
-[ext_resource type="Script" uid="uid://darcxhmbjfx04" path="res://gameplay/dialogue/subtitles.gd" id="2_yev5y"]
+[ext_resource type="Script" uid="uid://darcxhmbjfx04" path="res://ui/subtitles_ui.gd" id="2_yev5y"]
 
 [node name="UI" type="Control"]
 layout_mode = 3

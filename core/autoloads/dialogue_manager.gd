@@ -1,14 +1,5 @@
 extends Node
 
-signal dialogue_started
-signal dialogue_ended
-
-signal node_entered(node: DialogueNode)
-signal node_exited(node: DialogueNode)
-
-signal selection_started(connections: Array[DialogueConnection])
-signal selection_ended
-
 var current_graph: DialogueGraph
 var current_node: DialogueNode
 var current_nodes: Dictionary[StringName, DialogueNode] = {}
@@ -32,8 +23,8 @@ func start_dialogue(graph: DialogueGraph) -> void:
 	current_node = current_nodes.get("start")
 	is_active = true
 
-	dialogue_started.emit()
-	node_entered.emit(current_node)
+	EventBus.dialogue_started.emit()
+	EventBus.node_entered.emit(current_node)
 
 func end_dialogue() -> void:
 	if not is_active: return
@@ -41,13 +32,13 @@ func end_dialogue() -> void:
 	if is_selecting:
 		is_selecting = false
 
-		selection_ended.emit()
+		EventBus.dialogue_selection_ended.emit()
 
 	await get_tree().physics_frame # To avoid reactivating the dialogue
 
 	is_active = false
 
-	dialogue_ended.emit()
+	EventBus.dialogue_ended.emit()
 
 func advance_dialogue() -> void:
 	if not is_active or is_selecting: return
@@ -62,11 +53,11 @@ func advance_dialogue() -> void:
 
 			return
 		
-		node_exited.emit(current_node)
+		EventBus.dialogue_node_exited.emit(current_node)
 		
 		current_node = current_nodes.get(next_node)
 
-		node_entered.emit(current_node)
+		EventBus.dialogue_node_entered.emit(current_node)
 	else:
 		handle_branching(current_node.connections)
 
@@ -75,7 +66,7 @@ func handle_branching(connections: Array[DialogueConnection]) -> void:
 
 	is_selecting = true
 
-	selection_started.emit(connections)
+	EventBus.dialogue_selection_started.emit(connections)
 
 func select_branch(label: StringName) -> void:
 	if not is_active or not is_selecting: return
@@ -90,9 +81,9 @@ func select_branch(label: StringName) -> void:
 
 		is_selecting = false
 
-		selection_ended.emit()
-		node_exited.emit(current_node)
+		EventBus.dialogue_selection_ended.emit()
+		EventBus.dialogue_node_exited.emit(current_node)
 		
 		current_node = current_nodes.get(connection.next_node)
 
-		node_entered.emit(current_node)
+		EventBus.dialogue_node_entered.emit(current_node)
