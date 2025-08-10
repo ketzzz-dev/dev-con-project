@@ -2,7 +2,7 @@ extends Node
 
 @export var speed: float
 @export var acceleration: float
-@export var deceleration: float
+@export var deceleration: float	
 
 @onready var player: CharacterBody3D = get_parent()
 

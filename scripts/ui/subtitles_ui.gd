@@ -32,11 +32,11 @@ func _ready() -> void:
 
 		add_child(type_audio_pool[i])
 
-	EventBus.dialogue_started.connect(_on_dialogue_started)
-	EventBus.dialogue_ended.connect(_on_dialogue_ended)
-	EventBus.dialogue_node_entered.connect(_on_node_entered)
-	EventBus.dialogue_selection_started.connect(_on_selection_started)
-	EventBus.dialogue_selection_ended.connect(_on_selection_ended)
+	SignalBus.dialogue_started.connect(_on_dialogue_started)
+	SignalBus.dialogue_ended.connect(_on_dialogue_ended)
+	SignalBus.dialogue_node_entered.connect(_on_node_entered)
+	SignalBus.dialogue_selection_started.connect(_on_selection_started)
+	SignalBus.dialogue_selection_ended.connect(_on_selection_ended)
 
 	type_timer.timeout.connect(_on_type_timer_timeout)
 

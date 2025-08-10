@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*res://core/autoloads/dialogue_manager.gd"
-EventBus="*res://core/autoloads/event_bus.gd"
+DialogueManager="*res://scripts/core/autoloads/dialogue_manager.gd"
+SignalBus="*res://scripts/core/autoloads/signal_bus.gd"
 
 [dotnet]
 
@@ -29,11 +29,9 @@ project/assembly_name="dev-con-project"
 
 folder_colors={
 "res://assets/": "blue",
-"res://core/": "gray",
-"res://entities/": "green",
-"res://gameplay/": "red",
-"res://scenes/": "yellow",
-"res://ui/": "orange"
+"res://resources/": "orange",
+"res://scenes/": "green",
+"res://scripts/": "gray"
 }
 
 [global_group]

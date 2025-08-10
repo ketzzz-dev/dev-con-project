@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnqun3kt2vse4"]
 
-[ext_resource type="Script" uid="uid://b3iqf4023losl" path="res://ui/keypad_ui.gd" id="1_2ufia"]
+[ext_resource type="Script" uid="uid://b3iqf4023losl" path="res://scripts/ui/keypad_ui.gd" id="1_2ufia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_603od"]
 border_width_left = 2

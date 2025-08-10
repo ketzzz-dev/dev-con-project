@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/ui.tscn" id="1_27dlr"]
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/player.tscn" id="2_1nm11"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_avmm1"]
-[ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://core/utilities/camera_follow.gd" id="4_a11d0"]
+[ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_a11d0"]
 [ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="5_kafaw"]
 [ext_resource type="PackedScene" uid="uid://bojfk37a7y5qr" path="res://scenes/suzuka_item.tscn" id="6_erupl"]
 [ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/keypad.tscn" id="7_2vq0s"]

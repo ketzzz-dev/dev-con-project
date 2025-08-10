@@ -9,12 +9,13 @@ var is_selecting := false
 
 func start_dialogue(graph: DialogueGraph) -> void:
 	if is_active: return
-	if graph.nodes == null or graph.nodes.size() == 0: return
+	if graph == null or graph.nodes == null or graph.nodes.is_empty(): return
 	
 	current_nodes.clear()
 
 	for node in graph.nodes:
-		current_nodes.set(node.id, node)
+		if node and node.id != "":
+			current_nodes.set(node.id, node)
 
 	if not current_nodes.has("start"):
 		return
@@ -23,8 +24,8 @@ func start_dialogue(graph: DialogueGraph) -> void:
 	current_node = current_nodes.get("start")
 	is_active = true
 
-	EventBus.dialogue_started.emit()
-	EventBus.node_entered.emit(current_node)
+	SignalBus.dialogue_started.emit()
+	SignalBus.dialogue_node_entered.emit(current_node)
 
 func end_dialogue() -> void:
 	if not is_active: return
@@ -32,20 +33,23 @@ func end_dialogue() -> void:
 	if is_selecting:
 		is_selecting = false
 
-		EventBus.dialogue_selection_ended.emit()
+		SignalBus.dialogue_selection_ended.emit()
 
 	await get_tree().physics_frame # To avoid reactivating the dialogue
 
 	is_active = false
 
-	EventBus.dialogue_ended.emit()
+	SignalBus.dialogue_ended.emit()
 
 func advance_dialogue() -> void:
 	if not is_active or is_selecting: return
 
-	if current_node.connections == null or current_node.connections.size() == 0:
+	if current_node.connections == null or current_node.connections.is_empty():
 		end_dialogue()
-	elif current_node.connections.size() == 1:
+
+		return
+	
+	if current_node.connections.size() == 1:
 		var next_node := current_node.connections[0].next_node
 
 		if not current_nodes.has(next_node):
@@ -53,11 +57,11 @@ func advance_dialogue() -> void:
 
 			return
 		
-		EventBus.dialogue_node_exited.emit(current_node)
+		SignalBus.dialogue_node_exited.emit(current_node)
 		
 		current_node = current_nodes.get(next_node)
 
-		EventBus.dialogue_node_entered.emit(current_node)
+		SignalBus.dialogue_node_entered.emit(current_node)
 	else:
 		handle_branching(current_node.connections)
 
@@ -66,7 +70,7 @@ func handle_branching(connections: Array[DialogueConnection]) -> void:
 
 	is_selecting = true
 
-	EventBus.dialogue_selection_started.emit(connections)
+	SignalBus.dialogue_selection_started.emit(connections)
 
 func select_branch(label: StringName) -> void:
 	if not is_active or not is_selecting: return
@@ -81,9 +85,9 @@ func select_branch(label: StringName) -> void:
 
 		is_selecting = false
 
-		EventBus.dialogue_selection_ended.emit()
-		EventBus.dialogue_node_exited.emit(current_node)
+		SignalBus.dialogue_selection_ended.emit()
+		SignalBus.dialogue_node_exited.emit(current_node)
 		
 		current_node = current_nodes.get(connection.next_node)
 
-		EventBus.dialogue_node_entered.emit(current_node)
+		SignalBus.dialogue_node_entered.emit(current_node)

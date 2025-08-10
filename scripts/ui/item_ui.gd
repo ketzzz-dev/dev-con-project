@@ -4,8 +4,8 @@ extends Control
 @export var item_text: RichTextLabel
 
 func _ready() -> void:
-	EventBus.inventory_item_set.connect(_on_item_set)
-	EventBus.inventory_item_cleared.connect(_on_item_cleared)
+	SignalBus.inventory_item_set.connect(_on_item_set)
+	SignalBus.inventory_item_cleared.connect(_on_item_cleared)
 
 func _on_item_set(item: Item) -> void:
 	item_icon.texture = item.item_sprite.texture

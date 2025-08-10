@@ -15,7 +15,7 @@ func _ready():
 	for button in buttons:
 		button.pressed.connect(button_pressed.bind(button))
 		
-	EventBus.keypad_operation_started.connect(start_keypad_ui)
+	SignalBus.keypad_operation_started.connect(start_keypad_ui)
 	
 	get_parent().visible = false
 

@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/sprites/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://0xphxgpiyjsa" path="res://assets/animations/player_idle.tres" id="2_qlg0r"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cst2a4bigaguk" path="res://assets/animations/player_move.tres" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://kks6g61gxan0" path="res://entities/player/player_movement.gd" id="4_fjrip"]
-[ext_resource type="Script" uid="uid://d0mati00h2u45" path="res://entities/player/player_animator.gd" id="5_smehm"]
-[ext_resource type="Script" uid="uid://dvtnsxc36jod8" path="res://entities/player/player_interactor.gd" id="6_ur7pv"]
+[ext_resource type="Script" uid="uid://kks6g61gxan0" path="res://scripts/entities/player/player_movement.gd" id="4_fjrip"]
+[ext_resource type="Script" uid="uid://d0mati00h2u45" path="res://scripts/entities/player/player_animator.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://dvtnsxc36jod8" path="res://scripts/entities/player/player_interactor.gd" id="6_ur7pv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bl13t"]
 height = 1.0

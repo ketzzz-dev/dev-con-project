@@ -10,6 +10,6 @@ enum ItemType {
 
 # When it works, it works its bad but man
 func interact() -> void:
-	EventBus.inventory_item_set.emit(self)
+	SignalBus.inventory_item_set.emit(self)
 	
 	get_parent().queue_free()

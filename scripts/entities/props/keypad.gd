@@ -7,7 +7,7 @@ var is_open := false
 
 func interact() -> void:
 	if not is_operating and not is_open:
-		EventBus.keypad_operation_started.emit(self)
+		SignalBus.keypad_operation_started.emit(self)
 
 func finish_typing() -> void:
 	pass
