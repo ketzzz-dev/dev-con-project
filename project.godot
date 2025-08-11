@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="dev-con-project"
-run/main_scene="uid://c72xefodcp18n"
+run/main_scene="uid://dyep7kd7t5yfy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
