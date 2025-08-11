@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ym137bxhfyb5"]
 
-[ext_resource type="Texture2D" uid="uid://cu1ic4sg232ad" path="res://assets/placeholder/BAKUSHIN.png" id="1_wehjn"]
+[ext_resource type="Texture2D" uid="uid://cnhi1jjajpfvi" path="res://assets/Puzzle Sprites/Axe.png" id="1_wehjn"]
 [ext_resource type="Script" uid="uid://ch2bdjgtuqjga" path="res://scripts/gameplay/interactable/item.gd" id="2_xg5ys"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28b80"]
@@ -10,6 +10,7 @@ height = 1.26626
 [node name="StaticBody3D" type="StaticBody3D"]
 
 [node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
 pixel_size = 0.001
 billboard = 2
 shaded = true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://45y6eobvy4db"]
+[gd_scene load_steps=7 format=3 uid="uid://45y6eobvy4db"]
 
 [ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="1_bdby8"]
 [ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scripts/gameplay/interactable/outline.gd" id="2_y4iw1"]
 [ext_resource type="Script" uid="uid://020whbr8ux1v" path="res://scripts/entities/props/lever.gd" id="3_oplvp"]
+[ext_resource type="Texture2D" uid="uid://cofy0lddqulv3" path="res://assets/Puzzle Sprites/Lever_inactive.png" id="4_bdby8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7cm"]
 size = Vector3(0.3, 1.07422, 0.522095)
@@ -17,10 +18,16 @@ shape = SubResource("BoxShape3D_is7cm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 1.1, 0, 0, 0, 0.5, 0, 0.55, 0)
+visible = false
 material_overlay = ExtResource("1_bdby8")
 mesh = SubResource("BoxMesh_o2pmc")
 script = ExtResource("2_y4iw1")
 
 [node name="Interactable" type="Node" parent="."]
 script = ExtResource("3_oplvp")
+delayTime = 1.0
 metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0119729, 0, -1.99996, 0, 2, 0, 1.99996, 0, -0.0119729, 0, 0.375, 0)
+texture = ExtResource("4_bdby8")
