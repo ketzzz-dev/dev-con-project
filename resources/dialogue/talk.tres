@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="DialogueGraph" load_steps=16 format=3 uid="uid://qu61r84ixuso"]
+
+[ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/gameplay/dialogue/dialogue_node.gd" id="1_okups"]
+[ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/gameplay/dialogue/dialogue_connection.gd" id="2_28fxm"]
+[ext_resource type="Script" uid="uid://b0em3161bl1nx" path="res://scripts/gameplay/dialogue/dialogue_graph.gd" id="2_gc1pb"]
+
+[sub_resource type="Resource" id="Resource_gc1pb"]
+script = ExtResource("2_28fxm")
+id = &"talk_01"
+label = ""
+next_node = &"talk_01"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_7h2od"]
+script = ExtResource("1_okups")
+id = &"start"
+content = "What do you want?"
+connections = Array[ExtResource("2_28fxm")]([SubResource("Resource_gc1pb")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_28fxm"]
+script = ExtResource("2_28fxm")
+id = &"talk_02"
+label = ""
+next_node = &"talk_02"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_6ypo4"]
+script = ExtResource("1_okups")
+id = &"talk_01"
+content = "You wanna talk to me?"
+connections = Array[ExtResource("2_28fxm")]([SubResource("Resource_28fxm")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_pwgyf"]
+script = ExtResource("2_28fxm")
+id = &"nothing_02"
+label = "Nothing..."
+next_node = &"nothing"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_ab1g8"]
+script = ExtResource("2_28fxm")
+id = &"about_place"
+label = "What is this place?"
+next_node = &"about_place_01"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_1jv7h"]
+script = ExtResource("2_28fxm")
+id = &"wyka_bb"
+label = "What you know about Bunny Burrows?"
+next_node = &""
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_nsnhy"]
+script = ExtResource("1_okups")
+id = &"talk_02"
+content = "Sure, what do you wanna talk about?"
+connections = Array[ExtResource("2_28fxm")]([SubResource("Resource_pwgyf"), SubResource("Resource_ab1g8"), SubResource("Resource_1jv7h")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_1wfwq"]
+script = ExtResource("1_okups")
+id = &"nothing"
+content = "Oh, okay then..."
+connections = Array[ExtResource("2_28fxm")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_vpq2f"]
+script = ExtResource("2_28fxm")
+id = &"about_place_01"
+label = ""
+next_node = &"about_place_02"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_qqg8r"]
+script = ExtResource("1_okups")
+id = &"about_place_01"
+content = "This place?"
+connections = Array[ExtResource("2_28fxm")]([SubResource("Resource_vpq2f")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_f8j76"]
+script = ExtResource("1_okups")
+id = &"about_place_02"
+content = "This is a special place where we wait for our destination."
+connections = Array[ExtResource("2_28fxm")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[resource]
+script = ExtResource("2_gc1pb")
+nodes = Array[ExtResource("1_okups")]([SubResource("Resource_7h2od"), SubResource("Resource_6ypo4"), SubResource("Resource_nsnhy"), SubResource("Resource_1wfwq"), SubResource("Resource_qqg8r"), SubResource("Resource_f8j76")])
+metadata/_custom_type_script = "uid://b0em3161bl1nx"

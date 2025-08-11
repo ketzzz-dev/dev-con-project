@@ -12,4 +12,5 @@ signal dialogue_node_entered(node: DialogueNode)
 signal dialogue_node_exited(node: DialogueNode)
 
 signal dialogue_selection_started(connections: Array[DialogueConnection])
+signal dialogue_selection_made(connection: DialogueConnection)
 signal dialogue_selection_ended

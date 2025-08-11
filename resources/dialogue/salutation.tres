@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueGraph" load_steps=5 format=3 uid="uid://cke6rttpysye8"]
+
+[ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/gameplay/dialogue/dialogue_node.gd" id="1_g3wb2"]
+[ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/gameplay/dialogue/dialogue_connection.gd" id="2_lgq0r"]
+[ext_resource type="Script" uid="uid://b0em3161bl1nx" path="res://scripts/gameplay/dialogue/dialogue_graph.gd" id="3_eaamn"]
+
+[sub_resource type="Resource" id="Resource_ii27d"]
+script = ExtResource("1_g3wb2")
+id = &"start"
+content = "You seem new here..."
+connections = Array[ExtResource("2_lgq0r")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[resource]
+script = ExtResource("3_eaamn")
+nodes = Array[ExtResource("1_g3wb2")]([SubResource("Resource_ii27d")])
+metadata/_custom_type_script = "uid://b0em3161bl1nx"

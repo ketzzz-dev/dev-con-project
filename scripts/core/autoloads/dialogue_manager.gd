@@ -34,6 +34,8 @@ func end_dialogue() -> void:
 		is_selecting = false
 
 		SignalBus.dialogue_selection_ended.emit()
+	if current_node:
+		SignalBus.dialogue_node_exited.emit(current_node)
 
 	await get_tree().physics_frame # To avoid reactivating the dialogue
 
@@ -56,7 +58,7 @@ func advance_dialogue() -> void:
 			end_dialogue()
 
 			return
-		
+			
 		SignalBus.dialogue_node_exited.emit(current_node)
 		
 		current_node = current_nodes.get(next_node)
@@ -72,19 +74,21 @@ func handle_branching(connections: Array[DialogueConnection]) -> void:
 
 	SignalBus.dialogue_selection_started.emit(connections)
 
-func select_branch(label: StringName) -> void:
+func select_branch(id: StringName) -> void:
 	if not is_active or not is_selecting: return
 
 	for connection in current_node.connections:
-		if connection.label != label: continue
-
+		if connection.id != id: continue
+		
+		SignalBus.dialogue_selection_made.emit(connection)
+		
 		if not current_nodes.has(connection.next_node):
 			end_dialogue()
 
 			return
 
 		is_selecting = false
-
+		
 		SignalBus.dialogue_selection_ended.emit()
 		SignalBus.dialogue_node_exited.emit(current_node)
 		

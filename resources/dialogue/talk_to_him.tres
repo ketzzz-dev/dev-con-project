@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueGraph" load_steps=5 format=3 uid="uid://b0mmsuyv3xkss"]
+
+[ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/gameplay/dialogue/dialogue_node.gd" id="1_4j411"]
+[ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/gameplay/dialogue/dialogue_connection.gd" id="2_8a0i1"]
+[ext_resource type="Script" uid="uid://b0em3161bl1nx" path="res://scripts/gameplay/dialogue/dialogue_graph.gd" id="3_swicw"]
+
+[sub_resource type="Resource" id="Resource_bewgy"]
+script = ExtResource("1_4j411")
+id = &"start"
+content = "I'm not telling until you talk to him."
+connections = Array[ExtResource("2_8a0i1")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[resource]
+script = ExtResource("3_swicw")
+nodes = Array[ExtResource("1_4j411")]([SubResource("Resource_bewgy")])
+metadata/_custom_type_script = "uid://b0em3161bl1nx"

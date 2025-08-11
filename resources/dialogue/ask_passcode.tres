@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogueGraph" load_steps=10 format=3 uid="uid://0d6kmdud0gro"]
+
+[ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/gameplay/dialogue/dialogue_node.gd" id="1_jwchm"]
+[ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/gameplay/dialogue/dialogue_connection.gd" id="2_8hsgm"]
+[ext_resource type="Script" uid="uid://b0em3161bl1nx" path="res://scripts/gameplay/dialogue/dialogue_graph.gd" id="3_sixqr"]
+
+[sub_resource type="Resource" id="Resource_l7gdi"]
+script = ExtResource("2_8hsgm")
+id = &"nothing"
+label = "Nothing"
+next_node = &""
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_bewgy"]
+script = ExtResource("2_8hsgm")
+id = &"passcode_01"
+label = "Do you know the passcode?"
+next_node = &"passcode_01"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_mq7w0"]
+script = ExtResource("1_jwchm")
+id = &"start"
+content = "What brings you here, stranger?"
+connections = Array[ExtResource("2_8hsgm")]([SubResource("Resource_l7gdi"), SubResource("Resource_bewgy")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_ii27d"]
+script = ExtResource("2_8hsgm")
+id = &"passcode_02"
+label = ""
+next_node = &"passcode_02"
+metadata/_custom_type_script = "uid://68duexnespag"
+
+[sub_resource type="Resource" id="Resource_i5hxh"]
+script = ExtResource("1_jwchm")
+id = &"passcode_01"
+content = "The passcode?"
+connections = Array[ExtResource("2_8hsgm")]([SubResource("Resource_ii27d")])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[sub_resource type="Resource" id="Resource_jxvcu"]
+script = ExtResource("1_jwchm")
+id = &"passcode_02"
+content = "I'll tell you when you talk to that guy over there."
+connections = Array[ExtResource("2_8hsgm")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[resource]
+script = ExtResource("3_sixqr")
+nodes = Array[ExtResource("1_jwchm")]([SubResource("Resource_mq7w0"), SubResource("Resource_i5hxh"), SubResource("Resource_jxvcu")])
+metadata/_custom_type_script = "uid://b0em3161bl1nx"

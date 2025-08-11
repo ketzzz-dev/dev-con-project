@@ -75,7 +75,7 @@ func _on_selection_started(connections: Array[DialogueConnection]) -> void:
 		option_pool[i].visible = true
 		option_pool[i].text = connections[i].label
 
-		var on_pressed = func(): DialogueManager.select_branch(connections[i].label)
+		var on_pressed = func(): DialogueManager.select_branch(connections[i].id)
 
 		option_pool[i].pressed.connect(on_pressed, CONNECT_DEFERRED)
 
