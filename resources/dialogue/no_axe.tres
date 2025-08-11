@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueGraph" load_steps=5 format=3 uid="uid://b27ubcp6v437h"]
+
+[ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/gameplay/dialogue/dialogue_node.gd" id="1_mdotx"]
+[ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/gameplay/dialogue/dialogue_connection.gd" id="2_ds5qn"]
+[ext_resource type="Script" uid="uid://b0em3161bl1nx" path="res://scripts/gameplay/dialogue/dialogue_graph.gd" id="3_6wq8u"]
+
+[sub_resource type="Resource" id="Resource_mq7w0"]
+script = ExtResource("1_mdotx")
+id = &"start"
+content = "It seems I need some kind of weapon to break this item..."
+connections = Array[ExtResource("2_ds5qn")]([])
+metadata/_custom_type_script = "uid://duxlgl7xahmms"
+
+[resource]
+script = ExtResource("3_6wq8u")
+nodes = Array[ExtResource("1_mdotx")]([SubResource("Resource_mq7w0")])
+metadata/_custom_type_script = "uid://b0em3161bl1nx"

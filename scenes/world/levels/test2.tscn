@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3dlhi84tpeuy"]
+[gd_scene load_steps=14 format=3 uid="uid://c3dlhi84tpeuy"]
 
 [ext_resource type="PackedScene" uid="uid://3svsacwngjq3" path="res://scenes/ui/components/game_timer.tscn" id="1_4jsyu"]
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_1ft1o"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjrafeg7feeqw" path="res://scenes/world/prefabs/crate.tscn" id="5_itmcp"]
 [ext_resource type="PackedScene" uid="uid://ym137bxhfyb5" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="7_ufsui"]
+[ext_resource type="PackedScene" uid="uid://45y6eobvy4db" path="res://scenes/world/prefabs/lever.tscn" id="8_rj1kb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -58,9 +59,12 @@ target = NodePath("../Player")
 offset = Vector3(0, 3, 6)
 
 [node name="Crate" parent="." instance=ExtResource("5_itmcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.86329, 0, 2.95876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374569, 0, 5.3486)
 
 [node name="StaticBody3D" parent="." instance=ExtResource("6_ufsui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5079, 0.3725, -2.514)
 
 [node name="UI" parent="." instance=ExtResource("7_ufsui")]
+
+[node name="Lever" parent="." instance=ExtResource("8_rj1kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329959, -1.19209e-07, 6.88713)
