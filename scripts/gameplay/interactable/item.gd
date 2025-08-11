@@ -1,7 +1,8 @@
 class_name Item extends Interactable
 
 enum ItemType {
-	PlaceholderSuzuka
+	PlaceholderSuzuka,
+	Axe
 }
 
 @export var item_type: ItemType

@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3dlhi84tpeuy"]
+[gd_scene load_steps=13 format=3 uid="uid://c3dlhi84tpeuy"]
 
 [ext_resource type="PackedScene" uid="uid://3svsacwngjq3" path="res://scenes/ui/components/game_timer.tscn" id="1_4jsyu"]
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_1ft1o"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_8r8o6"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_ndd0t"]
+[ext_resource type="PackedScene" uid="uid://bjrafeg7feeqw" path="res://scenes/world/prefabs/crate.tscn" id="5_itmcp"]
+[ext_resource type="PackedScene" uid="uid://ym137bxhfyb5" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
+[ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="7_ufsui"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -53,3 +56,11 @@ fov = 45.0
 script = ExtResource("4_ndd0t")
 target = NodePath("../Player")
 offset = Vector3(0, 3, 6)
+
+[node name="Crate" parent="." instance=ExtResource("5_itmcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.86329, 0, 2.95876)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("6_ufsui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5079, 0.3725, -2.514)
+
+[node name="UI" parent="." instance=ExtResource("7_ufsui")]

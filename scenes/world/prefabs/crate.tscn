@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjrafeg7feeqw"]
+
+[ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="1_guydy"]
+[ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scripts/gameplay/interactable/outline.gd" id="2_g3bex"]
+[ext_resource type="Script" uid="uid://dmkxdohu3etw" path="res://scripts/entities/props/crate.gd" id="3_d5e0y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_is7cm"]
+size = Vector3(0.3, 1.07422, 0.522095)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o2pmc"]
+
+[node name="Crate" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00120538, 0.562891, -0.00360107)
+shape = SubResource("BoxShape3D_is7cm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 1.1, 0, 0, 0, 0.5, 0, 0.55, 0)
+material_overlay = ExtResource("1_guydy")
+mesh = SubResource("BoxMesh_o2pmc")
+script = ExtResource("2_g3bex")
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("3_d5e0y")
+metadata/_custom_type_script = "uid://d2cw4dtbia3w2"

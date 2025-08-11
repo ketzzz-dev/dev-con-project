@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ym137bxhfyb5"]
+
+[ext_resource type="Texture2D" uid="uid://cu1ic4sg232ad" path="res://assets/placeholder/BAKUSHIN.png" id="1_wehjn"]
+[ext_resource type="Script" uid="uid://ch2bdjgtuqjga" path="res://scripts/gameplay/interactable/item.gd" id="2_xg5ys"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28b80"]
+radius = 0.240319
+height = 1.26626
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Sprite" type="Sprite3D" parent="."]
+pixel_size = 0.001
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture = ExtResource("1_wehjn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_28b80")
+
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("item_sprite")]
+script = ExtResource("2_xg5ys")
+item_type = 1
+item_name = "Axe"
+item_sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
