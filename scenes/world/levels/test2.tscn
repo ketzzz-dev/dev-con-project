@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_1ft1o"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_8r8o6"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_ndd0t"]
-[ext_resource type="PackedScene" uid="uid://bjrafeg7feeqw" path="res://scenes/world/prefabs/crate.tscn" id="5_itmcp"]
-[ext_resource type="PackedScene" uid="uid://ym137bxhfyb5" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
+[ext_resource type="PackedScene" path="res://scenes/world/prefabs/crate.tscn" id="5_itmcp"]
+[ext_resource type="PackedScene" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="7_ufsui"]
-[ext_resource type="PackedScene" uid="uid://45y6eobvy4db" path="res://scenes/world/prefabs/lever.tscn" id="8_rj1kb"]
-[ext_resource type="PackedScene" uid="uid://dvcqfiqw06cqq" path="res://scenes/world/prefabs/crate_new.tscn" id="9_5p5ap"]
+[ext_resource type="PackedScene" path="res://scenes/world/prefabs/lever.tscn" id="8_rj1kb"]
+[ext_resource type="PackedScene" path="res://scenes/world/prefabs/crate_new.tscn" id="9_5p5ap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -63,21 +63,21 @@ offset = Vector3(0, 3, 6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0284421, 0, 5.3486)
 visible = false
 
-[node name="StaticBody3D" parent="." instance=ExtResource("6_ufsui")]
+[node name="Axe" parent="." instance=ExtResource("6_ufsui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5079, 0.3725, -2.514)
 
 [node name="UI" parent="." instance=ExtResource("7_ufsui")]
 
 [node name="Lever" parent="." instance=ExtResource("8_rj1kb")]
-transform = Transform3D(-0.0202269, 0, 0.999795, 0, 1, 0, -0.999795, 0, -0.0202269, 7.59179, -1.19209e-07, 0.148271)
+transform = Transform3D(-0.0192402, 0.00188526, 0.999813, 0.000657638, 0.999998, -0.00187295, -0.999814, 0.00062147, -0.0192414, 7.59132, -0.000438362, 0.148345)
 
 [node name="Crates" type="Node" parent="."]
 
 [node name="Crate2" parent="Crates" instance=ExtResource("9_5p5ap")]
-transform = Transform3D(0.0321427, -0.0002014, -0.999483, 0.00626569, 0.99998, 0, 0.999464, -0.00626245, 0.0321434, 6.76966, 0.357832, 0.208463)
+transform = Transform3D(0.0311681, 0.00169001, -0.999513, 0.00558577, 0.999982, 0.00186498, 0.999499, -0.00564119, 0.0311582, 6.76981, 0.358906, 0.207949)
 
 [node name="Crate3" parent="Crates" instance=ExtResource("9_5p5ap")]
-transform = Transform3D(0.0321427, -0.0002014, -0.999483, 0.00626569, 0.99998, 0, 0.999464, -0.00626245, 0.0321434, 7.47357, 0.357832, -0.577709)
+transform = Transform3D(0.0311681, 0.00169001, -0.999513, 0.00558577, 0.999982, 0.00186498, 0.999499, -0.00564119, 0.0311582, 7.47449, 0.358066, -0.577528)
 
 [node name="Crate4" parent="Crates" instance=ExtResource("9_5p5ap")]
-transform = Transform3D(0.0321427, -0.0002014, -0.999483, 0.00626569, 0.99998, 0, 0.999464, -0.00626245, 0.0321434, 7.55406, 0.357832, 0.958507)
+transform = Transform3D(0.0311681, 0.00169001, -0.999513, 0.00558577, 0.999982, 0.00186498, 0.999499, -0.00564119, 0.0311582, 7.55346, 0.356962, 0.958766)

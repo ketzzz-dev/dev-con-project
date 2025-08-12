@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueGraph" load_steps=5 format=3 uid="uid://b27ubcp6v437h"]
+[gd_resource type="Resource" script_class="DialogueGraph" load_steps=5 format=3 uid="uid://cya6fg11iqla"]
 
 [ext_resource type="Script" uid="uid://duxlgl7xahmms" path="res://scripts/gameplay/dialogue/dialogue_node.gd" id="1_mdotx"]
 [ext_resource type="Script" uid="uid://68duexnespag" path="res://scripts/gameplay/dialogue/dialogue_connection.gd" id="2_ds5qn"]
