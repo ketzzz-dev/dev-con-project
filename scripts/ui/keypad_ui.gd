@@ -22,6 +22,7 @@ func _ready():
 func start_keypad_ui(keypad: Keypad) -> void:
 	current_keypad = keypad
 	get_parent().visible = true
+	GameState.freeze_player = true
 
 	pass
 
@@ -34,6 +35,8 @@ func finish_keypad_ui() -> void:
 
 	current_keypad = null
 	get_parent().visible = false
+	
+	GameState.freeze_player = false
 
 	pass
 

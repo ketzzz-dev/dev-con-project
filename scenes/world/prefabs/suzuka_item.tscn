@@ -7,7 +7,7 @@
 radius = 0.240319
 height = 1.26626
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="SuzukaItem" type="StaticBody3D"]
 
 [node name="Sprite" type="Sprite3D" parent="."]
 pixel_size = 0.001

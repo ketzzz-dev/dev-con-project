@@ -97,18 +97,18 @@ light_size = 1.0
 spot_range = 12.0
 spot_angle = 74.6
 
-[node name="SuzukaItem" parent="." instance=ExtResource("6_ts6ll")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0083, 0.5, 0)
+[node name="Keypad" parent="." node_paths=PackedStringArray("attached_door") instance=ExtResource("7_h18i7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7904, 0, -1.2761)
+pass_code = "3135"
+attached_door = NodePath("../Door")
 
 [node name="Door" parent="." node_paths=PackedStringArray("new_pos_node") instance=ExtResource("8_dk5ks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2911, 0.95, -0.124549)
 is_locked = true
 new_pos_node = NodePath("../NewPos")
 
-[node name="Keypad" parent="." node_paths=PackedStringArray("attached_door") instance=ExtResource("7_h18i7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7904, 0, -1.2761)
-pass_code = "3135"
-attached_door = NodePath("../Door")
-
 [node name="NewPos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2911, 0.85, -0.124549)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.291, 0, -0.125)
+
+[node name="SuzukaItem" parent="." instance=ExtResource("6_ts6ll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0053, 0.57, -0.0290567)
