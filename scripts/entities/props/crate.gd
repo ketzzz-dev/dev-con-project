@@ -5,7 +5,7 @@ var uiTextNode: Control
 
 
 func interact() -> void:
-	var GameUI = get_node("/root/Level01/UI")
+	var GameUI = get_tree().root.find_child("UI", true, false)
 	var uiText = GameUI.find_child("RichTextLabel", true, false)
 	if uiText and uiText.text == "Axe":
 		get_parent().queue_free()
