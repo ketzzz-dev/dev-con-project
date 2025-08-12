@@ -119,6 +119,14 @@ offset_right = 152.0
 offset_bottom = 384.0
 text = "0"
 
+[node name="Button11" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 336.0
+offset_right = 80.0
+offset_bottom = 384.0
+text = "<---"
+
 [node name="CodePanel" type="Panel" parent="Panel"]
 layout_mode = 0
 offset_left = 24.0

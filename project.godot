@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://scripts/core/autoloads/dialogue_manager.gd"
 SignalBus="*res://scripts/core/autoloads/signal_bus.gd"
+GameState="*res://scripts/core/autoloads/game_state.gd"
 
 [dotnet]
 

@@ -9,7 +9,7 @@ extends Node
 var input_direction := Vector2.ZERO
 
 func _process(_delta: float) -> void:
-	if DialogueManager.is_active:
+	if DialogueManager.is_active or GameState.freeze_player:
 		input_direction = Vector2.ZERO
 	else:
 		input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")

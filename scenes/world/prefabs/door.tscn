@@ -1,0 +1,34 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctbmr7opbukeb"]
+
+[ext_resource type="Script" uid="uid://dphw31vl7kpg6" path="res://scripts/entities/props/door.gd" id="1_jam20"]
+[ext_resource type="Script" uid="uid://mq77ohed00lp" path="res://scripts/entities/props/door_set.gd" id="1_u3ylv"]
+[ext_resource type="Resource" uid="uid://cm5nynxox5ffi" path="res://resources/dialogue/door_locked.tres" id="2_qaby3"]
+[ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="3_lin7e"]
+[ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scripts/gameplay/interactable/outline.gd" id="4_s53wd"]
+[ext_resource type="PackedScene" uid="uid://djc48mtu4g13q" path="res://scenes/ui/components/door_fade.tscn" id="6_t7r80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uodo0"]
+size = Vector3(0.30083, 2.08698, 0.893494)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jam20"]
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_u3ylv")
+dialogue_locked = ExtResource("2_qaby3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00480959, 0.0103455, 0.00137329)
+shape = SubResource("BoxShape3D_uodo0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 2.1, 0, 0, 0, 0.9, -0.00282192, 5.96046e-08, -0.0028317)
+material_overlay = ExtResource("3_lin7e")
+mesh = SubResource("BoxMesh_jam20")
+script = ExtResource("4_s53wd")
+
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("door_fade")]
+script = ExtResource("1_jam20")
+door_fade = NodePath("../door_fade")
+metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
+
+[node name="door_fade" parent="." instance=ExtResource("6_t7r80")]

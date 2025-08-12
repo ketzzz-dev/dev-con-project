@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyep7kd7t5yfy"]
+[gd_scene load_steps=14 format=3 uid="uid://dyep7kd7t5yfy"]
 
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="1_y8gaj"]
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_dk5ks"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="5_qkon3"]
 [ext_resource type="PackedScene" uid="uid://bojfk37a7y5qr" path="res://scenes/world/prefabs/suzuka_item.tscn" id="6_ts6ll"]
 [ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/world/prefabs/keypad.tscn" id="7_h18i7"]
+[ext_resource type="PackedScene" uid="uid://ctbmr7opbukeb" path="res://scenes/world/prefabs/door.tscn" id="8_dk5ks"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -51,6 +52,17 @@ debug_fill = false
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("QuadMesh_jcd4p")
 
+[node name="Ground2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
+shape = SubResource("WorldBoundaryShape3D_at5dv")
+debug_fill = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2"]
+mesh = SubResource("QuadMesh_jcd4p")
+skeleton = NodePath("../../Ground2")
+
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5, 10)
 fov = 45.0
@@ -78,8 +90,25 @@ light_energy = 9.364
 spot_range = 12.0
 spot_angle = 74.6
 
-[node name="SuzukaItem" parent="." instance=ExtResource("6_ts6ll")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2083, 0.6, 0)
+[node name="SpotLight3D2" type="SpotLight3D" parent="SpotLight3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 30, 1.42109e-14, -2.38419e-07)
+light_energy = 9.364
+light_size = 1.0
+spot_range = 12.0
+spot_angle = 74.6
 
-[node name="Keypad" parent="." instance=ExtResource("7_h18i7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7904, 0, 0.423896)
+[node name="Keypad" parent="." node_paths=PackedStringArray("attached_door") instance=ExtResource("7_h18i7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7904, 0, -1.2761)
+pass_code = "3135"
+attached_door = NodePath("../Door")
+
+[node name="Door" parent="." node_paths=PackedStringArray("new_pos_node") instance=ExtResource("8_dk5ks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2911, 0.95, -0.124549)
+is_locked = true
+new_pos_node = NodePath("../NewPos")
+
+[node name="NewPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.291, 0, -0.125)
+
+[node name="SuzukaItem" parent="." instance=ExtResource("6_ts6ll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0053, 0.57, -0.0290567)

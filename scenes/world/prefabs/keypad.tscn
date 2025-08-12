@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://82sr7xx07dy8"]
+[gd_scene load_steps=8 format=3 uid="uid://82sr7xx07dy8"]
 
 [ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="1_1dgaj"]
+[ext_resource type="Script" uid="uid://c53qk417gx74j" path="res://scripts/entities/props/keypad_set.gd" id="1_i7s5m"]
 [ext_resource type="Script" uid="uid://bmaee3on05yxb" path="res://scripts/entities/props/keypad.gd" id="1_o2pmc"]
 [ext_resource type="PackedScene" uid="uid://bnqun3kt2vse4" path="res://scenes/ui/components/keypad_ui.tscn" id="2_vxa2g"]
 [ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scripts/gameplay/interactable/outline.gd" id="2_y3le2"]
@@ -11,6 +12,7 @@ size = Vector3(0.3, 1.07422, 0.522095)
 [sub_resource type="BoxMesh" id="BoxMesh_o2pmc"]
 
 [node name="Keypad" type="StaticBody3D"]
+script = ExtResource("1_i7s5m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00120538, 0.562891, -0.00360107)
@@ -24,7 +26,6 @@ script = ExtResource("2_y3le2")
 
 [node name="Interactable" type="Node" parent="."]
 script = ExtResource("1_o2pmc")
-pass_code = "3151"
 metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
 
 [node name="KeypadUI" parent="." instance=ExtResource("2_vxa2g")]
