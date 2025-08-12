@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvcqfiqw06cqq"]
+[gd_scene load_steps=5 format=3 uid="uid://dac2njqnmakpn"]
 
 [ext_resource type="Script" uid="uid://dmkxdohu3etw" path="res://scripts/entities/props/crate.gd" id="3_6wibw"]
 [ext_resource type="Texture2D" uid="uid://boqigv22lylml" path="res://assets/Puzzle Sprites/Crate.png" id="3_g0rj3"]
-[ext_resource type="Resource" uid="uid://b27ubcp6v437h" path="res://resources/dialogue/no_axe.tres" id="4_rroh7"]
+[ext_resource type="Resource" uid="uid://cya6fg11iqla" path="res://resources/dialogue/no_axe.tres" id="4_rroh7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7qp6"]
 

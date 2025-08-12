@@ -18,7 +18,7 @@ func interact() -> void:
 
 		await get_tree().create_timer(0.5).timeout
 		
-		get_tree().current_scene.get_node("Player").transform.origin = new_pos_node.transform.origin
+		get_tree().current_scene.get_node("Player").position = new_pos_node.global_position
 
 		await tween.finished
 		door_fade.visible = false

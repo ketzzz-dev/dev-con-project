@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c72xefodcp18n"]
+[gd_scene load_steps=24 format=3 uid="uid://c72xefodcp18n"]
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="1_odbsn"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="2_8y18y"]
@@ -12,6 +12,11 @@
 [ext_resource type="Resource" uid="uid://cke6rttpysye8" path="res://resources/dialogue/salutation.tres" id="9_ii27d"]
 [ext_resource type="Script" uid="uid://cjixojrj1ckk7" path="res://scripts/entities/npcs/npc_02.gd" id="10_i5hxh"]
 [ext_resource type="Resource" uid="uid://qu61r84ixuso" path="res://resources/dialogue/talk.tres" id="10_mq7w0"]
+[ext_resource type="PackedScene" uid="uid://bdj8243jmgyl4" path="res://scenes/world/prefabs/door.tscn" id="12_mq7w0"]
+[ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/world/prefabs/keypad.tscn" id="14_7rjm4"]
+[ext_resource type="PackedScene" uid="uid://dac2njqnmakpn" path="res://scenes/world/prefabs/crate_new.tscn" id="15_oy7ii"]
+[ext_resource type="PackedScene" path="res://scenes/world/prefabs/axe.tscn" id="16_8j2nj"]
+[ext_resource type="PackedScene" path="res://scenes/world/prefabs/lever.tscn" id="17_mmd5u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8y18y"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -49,6 +54,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
 fov = 45.0
 script = ExtResource("2_8y18y")
 target = NodePath("../Player")
@@ -64,25 +70,14 @@ shape = SubResource("WorldBoundaryShape3D_ynxc0")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room01/Ground"]
 mesh = SubResource("PlaneMesh_q6olp")
 
-[node name="Room02" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-
-[node name="Ground" type="StaticBody3D" parent="Room02"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room02/Ground"]
-shape = SubResource("WorldBoundaryShape3D_ynxc0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room02/Ground"]
-mesh = SubResource("PlaneMesh_q6olp")
-
-[node name="NPC01" type="StaticBody3D" parent="."]
+[node name="NPC01" type="StaticBody3D" parent="Room01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC01"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room01/NPC01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_q6olp")
 
-[node name="Sprite3D" type="Sprite3D" parent="NPC01"]
+[node name="Sprite3D" type="Sprite3D" parent="Room01/NPC01"]
 offset = Vector2(0.5, 10)
 pixel_size = 0.0625
 billboard = 2
@@ -94,21 +89,21 @@ hframes = 8
 vframes = 12
 frame = 20
 
-[node name="Interactable" type="Node" parent="NPC01"]
+[node name="Interactable" type="Node" parent="Room01/NPC01"]
 script = ExtResource("5_l7gdi")
 ask_passcode = ExtResource("6_hgy7r")
 talk_to_him = ExtResource("7_i5hxh")
 tell_passcode = ExtResource("8_ii27d")
 metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
 
-[node name="NPC02" type="StaticBody3D" parent="."]
+[node name="NPC02" type="StaticBody3D" parent="Room01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC02"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room01/NPC02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_q6olp")
 
-[node name="Sprite3D" type="Sprite3D" parent="NPC02"]
+[node name="Sprite3D" type="Sprite3D" parent="Room01/NPC02"]
 offset = Vector2(0.5, 10)
 pixel_size = 0.0625
 billboard = 2
@@ -120,10 +115,49 @@ hframes = 8
 vframes = 12
 frame = 16
 
-[node name="Interactable" type="Node" parent="NPC02"]
+[node name="Interactable" type="Node" parent="Room01/NPC02"]
 script = ExtResource("10_i5hxh")
 salutations = ExtResource("9_ii27d")
 talk = ExtResource("10_mq7w0")
 metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
 
+[node name="Door" parent="Room01" node_paths=PackedStringArray("new_pos_node") instance=ExtResource("12_mq7w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
+is_locked = true
+new_pos_node = NodePath("../../Room02/NewPos")
+
+[node name="Room02" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="Room02"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room02/Ground"]
+shape = SubResource("WorldBoundaryShape3D_ynxc0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room02/Ground"]
+mesh = SubResource("PlaneMesh_q6olp")
+
+[node name="NewPos" type="Node3D" parent="Room02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
 [node name="UI" parent="." instance=ExtResource("5_q6olp")]
+
+[node name="Keypad" parent="." node_paths=PackedStringArray("attached_door") instance=ExtResource("14_7rjm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96222, 0, 1.54058)
+pass_code = "3301"
+attached_door = NodePath("../Room01/Door")
+
+[node name="Crate" parent="." instance=ExtResource("15_oy7ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, -1)
+
+[node name="Crate2" parent="." instance=ExtResource("15_oy7ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 1)
+
+[node name="Crate3" parent="." instance=ExtResource("15_oy7ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0.5, 0)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("16_8j2nj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.5, -2)
+
+[node name="Lever" parent="." instance=ExtResource("17_mmd5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)

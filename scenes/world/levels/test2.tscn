@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="7_ufsui"]
 [ext_resource type="PackedScene" path="res://scenes/world/prefabs/lever.tscn" id="8_rj1kb"]
-[ext_resource type="PackedScene" path="res://scenes/world/prefabs/crate_new.tscn" id="9_5p5ap"]
+[ext_resource type="PackedScene" uid="uid://dac2njqnmakpn" path="res://scenes/world/prefabs/crate_new.tscn" id="9_5p5ap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

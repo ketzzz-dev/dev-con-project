@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b851qijkfkrdi" path="res://assets/models/train_room1.fbx" id="5_qkon3"]
 [ext_resource type="PackedScene" uid="uid://bojfk37a7y5qr" path="res://scenes/world/prefabs/suzuka_item.tscn" id="6_ts6ll"]
 [ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/world/prefabs/keypad.tscn" id="7_h18i7"]
-[ext_resource type="PackedScene" uid="uid://ctbmr7opbukeb" path="res://scenes/world/prefabs/door.tscn" id="8_dk5ks"]
+[ext_resource type="PackedScene" uid="uid://bdj8243jmgyl4" path="res://scenes/world/prefabs/door.tscn" id="8_dk5ks"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
