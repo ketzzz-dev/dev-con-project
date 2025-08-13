@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bdj8243jmgyl4" path="res://scenes/world/prefabs/door.tscn" id="12_mq7w0"]
 [ext_resource type="PackedScene" uid="uid://82sr7xx07dy8" path="res://scenes/world/prefabs/keypad.tscn" id="14_7rjm4"]
 [ext_resource type="PackedScene" uid="uid://dac2njqnmakpn" path="res://scenes/world/prefabs/crate_new.tscn" id="15_oy7ii"]
-[ext_resource type="PackedScene" path="res://scenes/world/prefabs/axe.tscn" id="16_8j2nj"]
-[ext_resource type="PackedScene" path="res://scenes/world/prefabs/lever.tscn" id="17_mmd5u"]
+[ext_resource type="PackedScene" uid="uid://ym137bxhfyb5" path="res://scenes/world/prefabs/axe.tscn" id="16_8j2nj"]
+[ext_resource type="PackedScene" uid="uid://45y6eobvy4db" path="res://scenes/world/prefabs/lever.tscn" id="17_mmd5u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8y18y"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

@@ -13,4 +13,6 @@ enum ItemType {
 func interact() -> void:
 	SignalBus.inventory_item_set.emit(self)
 	
+	LoopManager.turn()
+	
 	get_parent().queue_free()

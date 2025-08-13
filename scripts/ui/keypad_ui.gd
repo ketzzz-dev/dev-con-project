@@ -37,6 +37,7 @@ func finish_keypad_ui() -> void:
 	get_parent().visible = false
 	
 	GameState.freeze_player = false
+	LoopManager.turn()
 
 	pass
 

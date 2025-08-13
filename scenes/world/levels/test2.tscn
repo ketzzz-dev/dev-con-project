@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="2_1ft1o"]
 [ext_resource type="Material" uid="uid://bhwfgy47fyufa" path="res://assets/materials/material_13.tres" id="3_8r8o6"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="4_ndd0t"]
-[ext_resource type="PackedScene" path="res://scenes/world/prefabs/crate.tscn" id="5_itmcp"]
-[ext_resource type="PackedScene" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
+[ext_resource type="PackedScene" uid="uid://bjrafeg7feeqw" path="res://scenes/world/prefabs/crate.tscn" id="5_itmcp"]
+[ext_resource type="PackedScene" uid="uid://ym137bxhfyb5" path="res://scenes/world/prefabs/axe.tscn" id="6_ufsui"]
 [ext_resource type="PackedScene" uid="uid://gjlckowlj43l" path="res://scenes/ui/components/ui.tscn" id="7_ufsui"]
-[ext_resource type="PackedScene" path="res://scenes/world/prefabs/lever.tscn" id="8_rj1kb"]
+[ext_resource type="PackedScene" uid="uid://45y6eobvy4db" path="res://scenes/world/prefabs/lever.tscn" id="8_rj1kb"]
 [ext_resource type="PackedScene" uid="uid://dac2njqnmakpn" path="res://scenes/world/prefabs/crate_new.tscn" id="9_5p5ap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74lek"]
