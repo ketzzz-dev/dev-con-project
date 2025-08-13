@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://ckeax63lyelfb" path="res://assets/materials/outline.tres" id="1_guydy"]
 [ext_resource type="Script" uid="uid://dfob6rebqhdx3" path="res://scripts/gameplay/interactable/outline.gd" id="2_g3bex"]
 [ext_resource type="Script" uid="uid://dmkxdohu3etw" path="res://scripts/entities/props/crate.gd" id="3_d5e0y"]
-[ext_resource type="Resource" uid="uid://b27ubcp6v437h" path="res://resources/dialogue/no_axe.tres" id="4_guydy"]
+[ext_resource type="Resource" uid="uid://cya6fg11iqla" path="res://resources/dialogue/no_axe.tres" id="4_guydy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7cm"]
 size = Vector3(0.3, 1.07422, 0.522095)

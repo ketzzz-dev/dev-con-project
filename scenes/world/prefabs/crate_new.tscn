@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7qp6"]
 
-[node name="Crate" type="StaticBody3D"]
+[node name="Crate2" type="StaticBody3D"]
 
 [node name="Interactable" type="Node" parent="."]
 script = ExtResource("3_6wibw")
