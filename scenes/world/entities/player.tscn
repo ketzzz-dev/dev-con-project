@@ -1,8 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwirmhm0gp358"]
+[gd_scene load_steps=17 format=3 uid="uid://cwirmhm0gp358"]
 
 [ext_resource type="Texture2D" uid="uid://w05wmklbrabd" path="res://assets/sprites/Player.png" id="1_30u66"]
+[ext_resource type="Texture2D" uid="uid://dr1l0ipcxg1r7" path="res://assets/sprites/BG1.png" id="4_d21hd"]
 [ext_resource type="Script" uid="uid://kks6g61gxan0" path="res://scripts/entities/player/player_movement.gd" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://txutubn7gro1" path="res://assets/sprites/BG2.png" id="5_sovnb"]
+[ext_resource type="Texture2D" uid="uid://dl52iavum8h3c" path="res://assets/sprites/BG3.png" id="6_aijal"]
 [ext_resource type="Script" uid="uid://dvtnsxc36jod8" path="res://scripts/entities/player/player_interactor.gd" id="6_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://rk0qluiqqhj8" path="res://assets/sprites/BG4.png" id="7_vlshd"]
+[ext_resource type="Texture2D" uid="uid://1nfksrym47wv" path="res://assets/sprites/BG5.png" id="8_ghcoa"]
+[ext_resource type="Texture2D" uid="uid://ctq0ajpioyfbj" path="res://assets/sprites/BG6.png" id="9_4enbs"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bl13t"]
 height = 1.0
@@ -88,5 +94,38 @@ interaction_area = NodePath("../Area3D")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_sovnb")
 autoplay = "default"
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, -135.777, -101.111)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27776)
+modulate = Color(0.244776, 0.244776, 0.244776, 1)
+texture = ExtResource("9_4enbs")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.80086)
+modulate = Color(0.28485, 0.28485, 0.28485, 1)
+texture = ExtResource("8_ghcoa")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.60135)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("7_vlshd")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.08889)
+modulate = Color(0.385493, 0.385492, 0.385492, 1)
+texture = ExtResource("6_aijal")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.71767)
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+texture = ExtResource("5_sovnb")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.60959)
+modulate = Color(0.699653, 0.699653, 0.699653, 1)
+texture = ExtResource("4_d21hd")
 
 [connection signal="body_entered" from="Area3D" to="PlayerMovement" method="on_body_entered"]

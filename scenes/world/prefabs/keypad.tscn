@@ -28,4 +28,6 @@ script = ExtResource("2_y3le2")
 script = ExtResource("1_o2pmc")
 metadata/_custom_type_script = "uid://d2cw4dtbia3w2"
 
-[node name="KeypadUI" parent="." instance=ExtResource("2_vxa2g")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="KeypadUI" parent="CanvasLayer" instance=ExtResource("2_vxa2g")]

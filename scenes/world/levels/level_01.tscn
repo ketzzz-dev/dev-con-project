@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c72xefodcp18n"]
+[gd_scene load_steps=39 format=3 uid="uid://c72xefodcp18n"]
 
 [ext_resource type="PackedScene" uid="uid://cwirmhm0gp358" path="res://scenes/world/entities/player.tscn" id="1_odbsn"]
 [ext_resource type="Script" uid="uid://bhvvwu6pwmtyr" path="res://scripts/core/utilities/camera_follow.gd" id="2_8y18y"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://45y6eobvy4db" path="res://scenes/world/prefabs/lever.tscn" id="17_mmd5u"]
 [ext_resource type="PackedScene" uid="uid://b3jvgi7l17q4n" path="res://assets/models/car1.glb" id="18_8j2nj"]
 [ext_resource type="PackedScene" uid="uid://41dj0jq3uswo" path="res://assets/models/CAR2glb.glb" id="19_mmd5u"]
+[ext_resource type="AudioStream" uid="uid://badff3jdyot8e" path="res://assets/audio/music/LOopO.mp3" id="20_4rcyc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8y18y"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -324,6 +325,9 @@ mesh = SubResource("PlaneMesh_q6olp")
 [node name="NewPos" type="Node3D" parent="Room02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.498, 0.826, 0)
 
+[node name="NewPos2" type="Node3D" parent="Room02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6147, 0.826, 0)
+
 [node name="Crate" parent="Room02" instance=ExtResource("15_oy7ii")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.7013, 0.634746, -0.783483)
 
@@ -336,10 +340,17 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.7013, 0.634746, 0.216517)
 [node name="StaticBody3D" parent="Room02" instance=ExtResource("16_8j2nj")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.1047, 0.5, -1.12708)
 
-[node name="Lever" parent="." instance=ExtResource("17_mmd5u")]
-transform = Transform3D(0.999735, 0, -0.0230189, 0, 1, 0, 0.0230189, 0, 0.999735, 44.204, 0.632384, -0.385895)
+[node name="Door2" parent="Room02" node_paths=PackedStringArray("new_pos_node") instance=ExtResource("12_mq7w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7826, 0.483023, -0.587548)
+new_pos_node = NodePath("../NewPos2")
 
 [node name="Room03" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Room03"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.2629, 1.16297, -0.345208)
+light_color = Color(1, 0.592157, 0, 1)
+light_energy = 2.0
+light_size = 1.665
 
 [node name="CAR2glb" parent="Room03" instance=ExtResource("19_mmd5u")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 35.049, -0.3, 0.904)
@@ -372,4 +383,21 @@ shape = SubResource("BoxShape3D_8j2nj")
 transform = Transform3D(-5.1798e-08, 0, 0.66, 0, 1, 0, -1.185, 0, -2.88495e-08, -3.882, 0.462, -9.25291)
 shape = SubResource("WorldBoundaryShape3D_ynxc0")
 
+[node name="Lever" parent="Room03" instance=ExtResource("17_mmd5u")]
+transform = Transform3D(0.999735, 0, -0.0230189, 0, 1, 0, 0.0230189, 0, 0.999735, 44.2592, 0.583833, -0.385895)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Room03"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.4197, 1.16297, 0.0953565)
+light_color = Color(1, 0.592157, 0, 1)
+light_energy = 2.0
+light_size = 1.665
+
 [node name="UI" parent="." instance=ExtResource("5_q6olp")]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("20_4rcyc")
+autoplay = true
+bus = &"bgm"
+parameters/looping = true
