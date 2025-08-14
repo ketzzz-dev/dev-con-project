@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djc48mtu4g13q" path="res://scenes/ui/components/door_fade.tscn" id="6_t7r80"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uodo0"]
-size = Vector3(0.30083, 2.08698, 0.893494)
+size = Vector3(0.30083, 3.34071, 3.0797)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jam20"]
 
@@ -17,10 +17,12 @@ script = ExtResource("1_u3ylv")
 dialogue_locked = ExtResource("2_qaby3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27766, 1.0931)
 shape = SubResource("BoxShape3D_uodo0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 2.1, 0, 0, 0, 0.9, 0, 0, 0)
+visible = false
 material_overlay = ExtResource("3_lin7e")
 mesh = SubResource("BoxMesh_jam20")
 script = ExtResource("4_s53wd")

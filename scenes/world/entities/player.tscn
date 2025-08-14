@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://cwirmhm0gp358"]
 
-[ext_resource type="Texture2D" uid="uid://glabolo3fpjo" path="res://assets/sprites/Small-8-Direction-Characters_by_AxulArt.png" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://w05wmklbrabd" path="res://assets/sprites/Player.png" id="1_30u66"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://0xphxgpiyjsa" path="res://assets/animations/player_idle.tres" id="2_qlg0r"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cst2a4bigaguk" path="res://assets/animations/player_move.tres" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://kks6g61gxan0" path="res://scripts/entities/player/player_movement.gd" id="4_fjrip"]
@@ -15,7 +15,7 @@ radius = 0.4
 radius = 1.0
 
 [sub_resource type="Animation" id="Animation_j5jx5"]
-length = 0.001
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -23,10 +23,10 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(4, 10)]
+"values": [Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3), Vector2i(1, 4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lpvoh"]
@@ -36,7 +36,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_at5dv"]
 resource_name = "idle_back"
-length = 1.0001
+length = 3.0
 loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
@@ -46,15 +46,15 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2i(0, 10)]
+"values": [Vector2i(5, 1), Vector2i(5, 2), Vector2i(5, 3), Vector2i(5, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_ghpyy"]
 resource_name = "idle_back_left"
-length = 1.0001
+length = 3.0
 loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
@@ -64,15 +64,15 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2i(7, 10)]
+"values": [Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_44saj"]
 resource_name = "idle_back_right"
-length = 1.0001
+length = 3.0
 loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
@@ -82,15 +82,14 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2i(1, 10)]
+"values": [Vector2i(6, 1), Vector2i(6, 2), Vector2i(6, 3), Vector2i(6, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_lpvoh"]
 resource_name = "idle_front"
-length = 1.0001
 loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
@@ -100,10 +99,10 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2i(4, 10)]
+"values": [Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3), Vector2i(1, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_yk7ts"]
@@ -231,37 +230,38 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_74lek"]
 resource_name = "move_front"
-length = 1.00003
+length = 3.0
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame_coords")
+tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(4, 9), Vector2i(4, 10), Vector2i(4, 11), Vector2i(4, 10)]
+"values": [10, 19, 25, 36]
 }
 
 [sub_resource type="Animation" id="Animation_xrtyr"]
 resource_name = "move_front_left"
+length = 3.0
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame_coords")
+tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(5, 9), Vector2i(5, 10), Vector2i(5, 11), Vector2i(5, 10)]
+"values": [10, 19, 28, 37]
 }
 
 [sub_resource type="Animation" id="Animation_5jxlq"]
@@ -283,6 +283,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ff6ho"]
 resource_name = "move_left"
+length = 3.0
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -292,10 +293,10 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [Vector2i(6, 9), Vector2i(6, 10), Vector2i(6, 11), Vector2i(6, 10)]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_7yos8"]
@@ -309,10 +310,10 @@ tracks/0/path = NodePath("Sprite3D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [Vector2i(2, 9), Vector2i(2, 10), Vector2i(2, 11), Vector2i(2, 10)]
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7mbro"]
@@ -378,10 +379,10 @@ billboard = 2
 shaded = true
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_qhqgy")
-hframes = 8
-vframes = 12
-frame = 84
+texture = ExtResource("1_30u66")
+hframes = 9
+vframes = 5
+frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

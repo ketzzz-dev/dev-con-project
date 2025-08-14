@@ -99,6 +99,7 @@ alignment = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(2, 2)
 texture = ExtResource("4_nmbnd")
 script = ExtResource("5_utpm5")
 turns = Array[Texture2D]([ExtResource("6_dpx8n"), ExtResource("7_cgi3u"), ExtResource("8_okiot"), ExtResource("4_nmbnd")])
